@@ -39,8 +39,9 @@ config = BrowserConfig(
     headless=False,  # Disable headless mode to avoid detection
     disable_security=False,
     deterministic_rendering=False,
+    user_agent_mode="random",
     new_context_config=BrowserContextConfig(
-        viewport={'width': 1280, 'height': 720},
+        viewport={'width': 1440, 'height': 900},
         device_scale_factor=1,
         is_mobile=False,
         user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
@@ -59,8 +60,8 @@ llm = ChatGoogleGenerativeAI(
     model="gemini-2.0-flash",
     api_key=api_key,
     max_retries=3,  # Add retries for rate limiting
-    max_tokens=2048,
-    temperature=0.7
+    max_tokens=1024,
+    temperature=0.5
 )
 
 async def initialize_browser():
@@ -70,15 +71,30 @@ async def initialize_browser():
 async def create_captcha_agent():
     agent = Agent(
         task=(
-            "Open https://www.skyscanner.net. "
-            "If you see a CAPTCHA page at 'https://www.skyscanner.net/sttc/px/captcha-v2/index.html', "
-            "check for a 'Press and Hold' button. "
-            "If you see a 'Press and Hold' button, this CAPTCHA requires manual intervention. "
-            "Return a message indicating that manual CAPTCHA solving is required. "
-            "If you see a different type of CAPTCHA (like image selection), try to solve it automatically. "
-            "After any CAPTCHA attempt, wait for the verification to complete and ensure you're redirected back to the main Skyscanner page. "
-            "If you're redirected back to the CAPTCHA page, try again or indicate manual intervention is needed."
-        ),
+          " 1. **Navigate & Load:**"
+          " * Attempt to navigate to `https://www.skyscanner.net`."
+          " * Wait up to **[e.g., 20-25]** seconds for the page to attempt loading."
+          " * During loading and after, actively look for and attempt to dismiss standard cookie/consent banners if they appear and might obstruct content checks. If a banner cannot be dismissed and blocks checks, note this as a potential issue."
+"2.  **Verify Success State:**"
+"* After the wait time, check if the page successfully displays key flight search elements (e.g., clearly visible input fields for From/To, date selectors, Search flights button)."
+"* If these key elements are present and interactive: Consider the page successfully loaded. Proceed with the next planned task on Skyscanner."
+"3.  **Handle Failure/Non-Success State:**"    
+"* If the key flight search elements are NOT reliably detected after the timeout, OR if navigation failed earlier:"
+"        a.  Analyze Current Page: Examine the current page's URL and visible content thoroughly."
+"        b.  Check for Explicit Site Errors: Look for common error indicators like Access Denied, Blocked, Forbidden, Error 403, Error 503, Site Maintenance or similar messages indicating the site itself is unavailable or blocking access."
+"            * If found: STOP execution for Skyscanner and report: ERROR: Skyscanner access failed (Reason: [Detected Error Message])."        
+"        c.  Check for CAPTCHA Indicators: Search broadly for keywords (e.g., CAPTCHA, verify, human, security check, prove you're not a robot, hCaptcha, reCAPTCHA, Cloudflare, Turnstile, challenge) AND visual elements:"
+"            i.  Press and Hold Button: If this specific interaction is detected."
+"                * Action: STOP and report: ACTION REQUIRED: Manual intervention needed (Press and Hold CAPTCHA) on Skyscanner."
+"            ii. Checkbox CAPTCHA: (e.g., a box next to I'm not a robot)."
+"                * Action: STOP and report: ACTION REQUIRED: Manual intervention needed (Checkbox CAPTCHA - e.g., reCAPTCHA) on Skyscanner."
+"            iii. Image Selection / Puzzle / Grid CAPTCHA: (e.g., instructions like select all squares with..., slide the puzzle piece)."
+"                * Action: STOP and report: ACTION REQUIRED: Manual intervention needed (Image/Puzzle CAPTCHA) on Skyscanner."
+"            iv. Other/Unclear CAPTCHA: If indicators strongly suggest a security challenge/CAPTCHA but it doesn't fit the specific types above."
+"                * Action: STOP and report: ACTION REQUIRED: Manual intervention needed (CAPTCHA detected - type unclear) on Skyscanner."
+"        d.  Handle Ambiguous Failures: If no explicit site error (step 3b) or clear CAPTCHA (step 3c) is identified, but the page is incorrect (e.g., partially loaded, wrong language redirect, blank page, blocked by undismissed banner)."
+"            * Action: STOP and report: ERROR: Failed to load Skyscanner search page correctly or encountered unexpected state. Manual check recommended."
+ ),
         llm=llm,
   browser=browser,
   controller=controller
@@ -336,6 +352,7 @@ async def navigate_to_skyscanner(browser: Browser):
         await page.goto("https://www.skyscanner.net")
     finally:
         await page.close()
+
 
 async def create_flight_agent():
     agent = Agent(
