@@ -32,7 +32,7 @@ async function generateAIResponse(prompt) {
   }
   try {
     const genAI = new GoogleGenerativeAI(process.env.GEMINIKEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
     const result = await model.generateContent(prompt);
     return result.response.text();
   } catch (error) {
@@ -86,7 +86,7 @@ async function computeHolidayDetails() {
     } else {
       try {
         const outboundFlightDetailsResponse = await axios.get(
-          `https://serpapi.com/search.json?engine=Google Flights&departure_id=${departureLocation}&type=2&adults=${adultGuests}&arrival_id=${arrivalLocation}&outbound_date=${departureDateLeaving}&currency=GBP&hl=en&gl=uk&stops=1&api_key=${process.env.SERPAKEY}`
+          `https://serpapi.com/search.json?engine=google_flights&departure_id=${departureLocation}&type=2&adults=${adultGuests}&arrival_id=${arrivalLocation}&outbound_date=${departureDateLeaving}&currency=GBP&hl=en&gl=uk&stops=1&api_key=${process.env.SERPAKEY}`
         );
 
         const bestOutboundFlight = outboundFlightDetailsResponse.data.best_flights?.[0] || outboundFlightDetailsResponse.data.other_flights?.[0];
@@ -130,7 +130,7 @@ async function computeHolidayDetails() {
     } else {
       try {
         const inboundFlightDetailsResponse = await axios.get(
-          `https://serpapi.com/search.json?engine=Google Flights&departure_id=${arrivalLocation}&type=2&adults=${adultGuests}&arrival_id=${departureLocation}&outbound_date=${arrivalDateComingBack}&currency=GBP&hl=en&gl=uk&stops=1&api_key=${process.env.SERPAKEY}`
+          `https://serpapi.com/search.json?engine=google_flights&departure_id=${arrivalLocation}&type=2&adults=${adultGuests}&arrival_id=${departureLocation}&outbound_date=${arrivalDateComingBack}&currency=GBP&hl=en&gl=uk&stops=1&api_key=${process.env.SERPAKEY}`
         );
 
         const bestInboundFlight = inboundFlightDetailsResponse.data.best_flights?.[0] || inboundFlightDetailsResponse.data.other_flights?.[0];
@@ -311,18 +311,18 @@ async function computeHolidayDetails() {
       }
     }
 
-    if (!process.env.RAPIDAPIKEY || !process.env.RAPIDAPIHOSTATTRACTION) {
-      console.warn("RAPIDAPIKEY or RAPIDAPIHOSTATTRACTION not found in .env. Skipping activity search.");
-      holidayResult.activity = "RAPIDAPIKEY or RAPIDAPIHOSTATTRACTION not configured. Skipping activity search.";
+    if (!process.env.RAPIDAPIKEY || !process.env.RAPIDAPIHOST) {
+      console.warn("RAPIDAPIKEY or RAPIDAPIHOST not found in .env. Skipping activity search.");
+      holidayResult.activity = "RAPIDAPIKEY or RAPIDAPIHOST not configured. Skipping activity search.";
     } else {
       try {
         const activityAutoCompleteSearchOptions = {
           method: "GET",
-          url: "https://tripadvisor-com1.p.rapidapi.com/auto-complete",
+          url: "https://booking-com15.p.rapidapi.com/api/v1/attraction/searchLocation",
           params: { query: correctedLocationForActivity },
           headers: {
             "x-rapidapi-key": process.env.RAPIDAPIKEY,
-            "x-rapidapi-host": process.env.RAPIDAPIHOSTATTRACTION,
+            "x-rapidapi-host": process.env.RAPIDAPIHOST,
           },
         };
 
@@ -333,7 +333,7 @@ async function computeHolidayDetails() {
           console.log("Activity GeoID fetched:", geoID);
           const activitiesOptions = {
             method: "GET",
-            url: "https://tripadvisor-com1.p.rapidapi.com/attractions/search",
+            url: "https://booking-com15.p.rapidapi.com/api/v1/attraction/searchAttraction",
             params: {
               geoId: geoID,
               units: "miles",
@@ -343,7 +343,7 @@ async function computeHolidayDetails() {
             },
             headers: {
               "x-rapidapi-key": process.env.RAPIDAPIKEY,
-              "x-rapidapi-host": process.env.RAPIDAPIHOSTATTRACTION,
+              "x-rapidapi-host": process.env.RAPIDAPIHOST,
             },
           };
 
@@ -357,7 +357,7 @@ async function computeHolidayDetails() {
 
             const getActivityDetailsOptions = {
               method: "GET",
-              url: "https://tripadvisor-com1.p.rapidapi.com/attractions/details",
+              url: "https://booking-com15.p.rapidapi.com/api/v1/attraction/getAttractionDetails",
               params: {
                 contentId: contentID,
                 units: "miles",
@@ -366,7 +366,7 @@ async function computeHolidayDetails() {
               },
               headers: {
                 "x-rapidapi-key": process.env.RAPIDAPIKEY,
-                "x-rapidapi-host": process.env.RAPIDAPIHOSTATTRACTION,
+                "x-rapidapi-host": process.env.RAPIDAPIHOST,
               },
             };
 
@@ -382,7 +382,7 @@ async function computeHolidayDetails() {
             };
             console.log("Activity details fetched.");
 
-            // Add activity photos if available (TripAdvisor structure can vary)
+            // Add activity photos if available (Booking structure can vary)
             const activityPhotosData = activityFullDetails?.container?.photos || activityFullDetails?.data?.photos || firstAttraction?.photos;
             if (activityPhotosData && activityPhotosData.length > 0) {
               activityPhotosData.slice(0, 3).forEach((photoObj) => {
@@ -459,7 +459,7 @@ async function computeHolidayDetails() {
     // Hotel price from Booking.com is often for the whole stay in its `priceBreakdown.grossPrice.amount`
     const hotelTotalPrice = parseFloat(holidayResult.hotel?.price) || 0;
     // Activity price: This is often not directly available or varies greatly. Defaulting to 0.
-    // You might need to inspect 'activityFullDetails.data.pricing' or similar for Tripadvisor if available.
+    // You might need to inspect 'activityFullDetails.data.pricing' or similar for Booking if available.
     const activityPrice = 0; // Placeholder, adjust if API provides it
 
     const totalPrice = outboundFlightPrice + inboundFlightPrice + hotelTotalPrice + activityPrice;
