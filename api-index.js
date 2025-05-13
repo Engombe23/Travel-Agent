@@ -4,7 +4,6 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // Load environment variables from .env file
 dotenv.config();
-
 // --- START OF EXAMPLE INPUT DATA ---
 // Replace these values with your desired test inputs
 const exampleHolidayRequest = {
@@ -92,7 +91,7 @@ async function computeHolidayDetails() {
         const bestOutboundFlight = outboundFlightDetailsResponse.data.best_flights?.[0] || outboundFlightDetailsResponse.data.other_flights?.[0];
 
         if (bestOutboundFlight) {
-          const outboundFlightURL = outboundFlightDetailsResponse.data.search_metadata?.Google_Flights_url;
+          const outboundFlightURL = outboundFlightDetailsResponse.data.search_metadata?.google_flights_url;
           const outboundFlightDepartureDetails = bestOutboundFlight.flights?.[0]?.departure_airport;
           const outboundFlightArrivalDetails = bestOutboundFlight.flights?.[0]?.arrival_airport;
 
@@ -136,7 +135,7 @@ async function computeHolidayDetails() {
         const bestInboundFlight = inboundFlightDetailsResponse.data.best_flights?.[0] || inboundFlightDetailsResponse.data.other_flights?.[0];
 
         if (bestInboundFlight) {
-          const inboundFlightURL = inboundFlightDetailsResponse.data.search_metadata?.Google_Flights_url;
+          const inboundFlightURL = inboundFlightDetailsResponse.data.search_metadata?.google_flights_url;
           const inboundFlightDepartureDetails = bestInboundFlight.flights?.[0]?.departure_airport;
           const inboundFlightArrivalDetails = bestInboundFlight.flights?.[0]?.arrival_airport;
 
@@ -214,12 +213,12 @@ async function computeHolidayDetails() {
           };
 
           const hotelSearchResponse = await axios.request(getHotelsOptions);
-          const hotelOverview = hotelSearchResponse.data.data?.hotels?.[0];
+          const hotelOverview = hotelSearchResponse.data.data.hotels[0];
 
-          if (hotelOverview?.property?.id) {
-            hotelName = hotelOverview.name || "Unknown Hotel";
+          if (hotelOverview.property.id) {
+            hotelName = hotelOverview.property.name || "Unknown Hotel";
             const hotelIdentifier = hotelOverview.property.id;
-            const hotelPrice = hotelOverview.property?.priceBreakdown?.grossPrice?.amount || null; // Adjusted path
+            const hotelPrice = hotelOverview.property.priceBreakdown.grossPrice.value || null; // Adjusted path
             const hotelPhotosRaw = hotelOverview.property?.photoUrlsOriginal || hotelOverview.property?.photoUrls; // Adjusted path for photos
 
             console.log(`Hotel found: ${hotelName}, ID: ${hotelIdentifier}`);
@@ -243,8 +242,8 @@ async function computeHolidayDetails() {
             };
 
             const hotelDetailsResponse = await axios.request(getHotelDetailsOptions);
-            const hotelFullDetails = hotelDetailsResponse.data.data; // This structure might vary
-            const bookingUrl = hotelFullDetails?.url; // Check actual path in response
+            const hotelFullDetails = hotelDetailsResponse.data.data;
+            const bookingUrl = hotelDetailsResponse.data.data.url;
 
             holidayResult.hotel = {
               overview: hotelOverview,
@@ -294,7 +293,7 @@ async function computeHolidayDetails() {
     // --- Activities ---
     console.log("\nFetching activity details...");
     let firstAttractionName = "N/A";
-    let correctedLocationForActivity = arrivalLocation; // Default to original arrival location
+    let correctedLocationForActivity = arrivalLocation;
 
     if (!process.env.GEMINIKEY) {
       console.warn("GEMINIKEY not found. Using original arrivalLocation for activity search.");
@@ -311,110 +310,73 @@ async function computeHolidayDetails() {
       }
     }
 
-    if (!process.env.RAPIDAPIKEY || !process.env.RAPIDAPIHOST) {
-      console.warn("RAPIDAPIKEY or RAPIDAPIHOST not found in .env. Skipping activity search.");
-      holidayResult.activity = "RAPIDAPIKEY or RAPIDAPIHOST not configured. Skipping activity search.";
+    if (!process.env.RAPIDAPIKEY || !process.env.RAPIDAPIHOSTATTRACTION) {
+      console.warn("RAPIDAPIKEY or RAPIDAPIHOSTATTRACTION not found in .env. Skipping activity search.");
+      holidayResult.activity = "RAPIDAPIKEY or RAPIDAPIHOSTATTRACTION not configured. Skipping activity search.";
     } else {
       try {
         const activityAutoCompleteSearchOptions = {
           method: "GET",
-          url: "https://booking-com15.p.rapidapi.com/api/v1/attraction/searchLocation",
-          params: { query: correctedLocationForActivity },
+          url: "https://booking-data.p.rapidapi.com/booking-app/attraction/autocomplete",
+          params: {query: correctedLocationForActivity},
           headers: {
             "x-rapidapi-key": process.env.RAPIDAPIKEY,
-            "x-rapidapi-host": process.env.RAPIDAPIHOST,
+            "x-rapidapi-host": process.env.RAPIDAPIHOSTATTRACTION,
           },
-        };
+        }
 
         const activityAutoCompleteResponse = await axios.request(activityAutoCompleteSearchOptions);
-        const geoID = activityAutoCompleteResponse.data.data?.[0]?.geoId;
+        const productID = activityAutoCompleteResponse.data.data[0].productId;
 
-        if (geoID) {
-          console.log("Activity GeoID fetched:", geoID);
+        if (productID) {
+          console.log("Activity ProductID fetched:", productID);
           const activitiesOptions = {
             method: "GET",
-            url: "https://booking-com15.p.rapidapi.com/api/v1/attraction/searchAttraction",
+            url: "https://booking-data.p.rapidapi.com/booking-app/attraction/search",
             params: {
-              geoId: geoID,
-              units: "miles",
-              sortType: "asc", // You might want "ranking" or "popularity"
-              startDate: departureDateLeaving,
-              endDate: departureDateLeaving, // For a single day of activities, adjust if needed
+              city_ufi: activityAutoCompleteResponse.data.data[0].cityUfi,
             },
             headers: {
               "x-rapidapi-key": process.env.RAPIDAPIKEY,
-              "x-rapidapi-host": process.env.RAPIDAPIHOST,
+              "x-rapidapi-host": process.env.RAPIDAPIHOSTATTRACTION,
             },
           };
 
           const activityListResponse = await axios.request(activitiesOptions);
-          const firstAttraction = activityListResponse.data.data?.attractions?.[0];
-
-          if (firstAttraction?.cardLink?.route?.typedParams?.contentId) {
-            firstAttractionName = firstAttraction.name || "Unknown Attraction";
-            const contentID = firstAttraction.cardLink.route.typedParams.contentId;
-            console.log(`Activity found: ${firstAttractionName}, ContentID: ${contentID}`);
+          const firstAttraction = activityListResponse.data.data;
+          
+          if (firstAttraction?.products[0].id) {
+            firstAttractionName = firstAttraction?.products[0].name;
+            const activityPrice = firstAttraction?.products[0].representativePrice.publicAmount;
 
             const getActivityDetailsOptions = {
               method: "GET",
-              url: "https://booking-com15.p.rapidapi.com/api/v1/attraction/getAttractionDetails",
+              url: "https://booking-data.p.rapidapi.com/booking-app/attraction/detail",
               params: {
-                contentId: contentID,
-                units: "miles",
-                startDate: departureDateLeaving,
-                endDate: departureDateLeaving,
+                slug: firstAttraction?.products[0].slug,
               },
               headers: {
                 "x-rapidapi-key": process.env.RAPIDAPIKEY,
-                "x-rapidapi-host": process.env.RAPIDAPIHOST,
+                "x-rapidapi-host": process.env.RAPIDAPIHOSTATTRACTION,
               },
-            };
+            }
 
             const activityDetailsResponse = await axios.request(getActivityDetailsOptions);
-            const activityFullDetails = activityDetailsResponse.data.data; // Structure might vary
-            const activityURL = activityFullDetails?.container?.shareInfo?.webUrl;
+            const activityFullDetails = activityDetailsResponse.data.data;
+            console.log(`Activity Full Details: ${JSON.stringify(activityFullDetails, null, 4)}`);
+            const activityURL = activityFullDetails.ufiDetails.url;
 
             holidayResult.activity = {
               name: firstAttractionName,
               overview: firstAttraction,
               details: activityFullDetails,
               activityURL: activityURL,
+              price: activityPrice,
             };
             console.log("Activity details fetched.");
-
-            // Add activity photos if available (Booking structure can vary)
-            const activityPhotosData = activityFullDetails?.container?.photos || activityFullDetails?.data?.photos || firstAttraction?.photos;
-            if (activityPhotosData && activityPhotosData.length > 0) {
-              activityPhotosData.slice(0, 3).forEach((photoObj) => {
-                // The photo URL might be in photo.photoUrl, photo.url, or photo.photo.photoSizes.large.url etc.
-                // You'll need to inspect the actual API response to get the correct path.
-                // Example for a common structure:
-                let pUrl = photoObj.url || photoObj.photoUrl;
-                if (photoObj.photo && photoObj.photo.photoSizes && photoObj.photo.photoSizes.large) {
-                  pUrl = photoObj.photo.photoSizes.large.url;
-                } else if (photoObj.data && photoObj.data.photo && photoObj.data.photo.photoSizes && photoObj.data.photo.photoSizes.large) {
-                  pUrl = photoObj.data.photo.photoSizes.large.url;
-                }
-
-                if (pUrl) {
-                  photos.push({
-                    type: "activity",
-                    url: pUrl,
-                    description: `${firstAttractionName} Photo`,
-                  });
-                } else {
-                  console.warn("Could not determine activity photo URL from object:", photoObj);
-                }
-              });
-            }
-          } else {
-            console.warn("No attractions found for the GeoID.");
-            holidayResult.activity = "No attractions found for GeoID.";
           }
-        } else {
-          console.warn("Could not find GeoID for activity search based on:", correctedLocationForActivity);
-          holidayResult.activity = `Could not find GeoID for '${correctedLocationForActivity}'.`;
         }
+
       } catch (activityError) {
         console.error("Error fetching activity details:", activityError.message);
         if (activityError.response) {
@@ -422,12 +384,8 @@ async function computeHolidayDetails() {
         }
         holidayResult.activity = `Error: ${activityError.message}`;
       }
-    }
-
-    // --- Store Photos ---
-    holidayResult.photos = photos;
-    console.log("\nPhotos collected:", photos.length);
-
+    };
+    
     // --- Generate Titles and Price ---
     console.log("\nGenerating title and subtitle...");
     let title = `Explore ${arrivalLocation}`;
@@ -460,7 +418,7 @@ async function computeHolidayDetails() {
     const hotelTotalPrice = parseFloat(holidayResult.hotel?.price) || 0;
     // Activity price: This is often not directly available or varies greatly. Defaulting to 0.
     // You might need to inspect 'activityFullDetails.data.pricing' or similar for Booking if available.
-    const activityPrice = 0; // Placeholder, adjust if API provides it
+    const activityPrice = parseFloat(holidayResult.activity?.price) || 0; // Placeholder, adjust if API provides it
 
     const totalPrice = outboundFlightPrice + inboundFlightPrice + hotelTotalPrice + activityPrice;
     holidayResult.priceBreakdown = {
