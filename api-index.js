@@ -42,7 +42,7 @@ async function generateAIResponse(prompt) {
 
 async function computeHolidayDetails() {
   try {
-    console.log("Starting holiday computation...\n");
+    console.error("Starting holiday computation...\n");
 
     // Initialize photos array
     const photos = [];
@@ -57,7 +57,7 @@ async function computeHolidayDetails() {
     const holidayType = exampleHolidayRequest.HolidayType;
     const arrivalDateComingBack = incrementDate(departureDateLeaving, lengthOfStay);
 
-    console.log("Input Data:", {
+    console.error("Input Data:", {
       departureLocation,
       arrivalLocation,
       adultGuests,
@@ -78,7 +78,7 @@ async function computeHolidayDetails() {
     };
 
     // --- Outbound Flight ---
-    console.log("\nFetching outbound flight details...");
+    console.error("\nFetching outbound flight details...");
     if (!process.env.SERPAKEY) {
       console.warn("SERPAKEY not found in .env. Skipping flight search.");
       holidayResult.outboundFlight = "SERPAKEY not configured. Skipping flight search.";
@@ -102,7 +102,7 @@ async function computeHolidayDetails() {
             flightURL: outboundFlightURL,
             price: bestOutboundFlight.price, // Storing price if available
           };
-          console.log("Outbound flight details fetched.");
+          console.error("Outbound flight details fetched.");
 
           if (bestOutboundFlight.flights?.[0]?.airline_logo) {
             photos.push({
@@ -122,7 +122,7 @@ async function computeHolidayDetails() {
     }
 
     // --- Inbound Flight ---
-    console.log("\nFetching inbound flight details...");
+    console.error("\nFetching inbound flight details...");
     if (!process.env.SERPAKEY) {
       console.warn("SERPAKEY not found in .env. Skipping flight search.");
       holidayResult.inboundFlight = "SERPAKEY not configured. Skipping flight search.";
@@ -146,7 +146,7 @@ async function computeHolidayDetails() {
             flightURL: inboundFlightURL,
             price: bestInboundFlight.price, // Storing price if available
           };
-          console.log("Inbound flight details fetched.");
+          console.error("Inbound flight details fetched.");
 
           // You might want to add the inbound airline logo to photos as well if different
           if (bestInboundFlight.flights?.[0]?.airline_logo && !photos.find((p) => p.url === bestInboundFlight.flights[0].airline_logo)) {
@@ -167,7 +167,7 @@ async function computeHolidayDetails() {
     }
 
     // --- Hotel ---
-    console.log("\nFetching hotel details...");
+    console.error("\nFetching hotel details...");
     let hotelName = "N/A"; // Default hotel name
     let hotelRegionDetailsPhoto = null;
 
@@ -189,7 +189,7 @@ async function computeHolidayDetails() {
         const hotelRegionDetails = regionResponse.data.data?.[0];
 
         if (hotelRegionDetails?.dest_id) {
-          console.log("Hotel region ID fetched:", hotelRegionDetails.dest_id);
+          console.error("Hotel region ID fetched:", hotelRegionDetails.dest_id);
           if (hotelRegionDetails.image_url) hotelRegionDetailsPhoto = hotelRegionDetails.image_url; //booking.com uses image_url
 
           const getHotelsOptions = {
@@ -221,7 +221,7 @@ async function computeHolidayDetails() {
             const hotelPrice = hotelOverview.property.priceBreakdown.grossPrice.value || null; // Adjusted path
             const hotelPhotosRaw = hotelOverview.property?.photoUrlsOriginal || hotelOverview.property?.photoUrls; // Adjusted path for photos
 
-            console.log(`Hotel found: ${hotelName}, ID: ${hotelIdentifier}`);
+            console.error(`Hotel found: ${hotelName}, ID: ${hotelIdentifier}`);
 
             const getHotelDetailsOptions = {
               method: "GET",
@@ -252,7 +252,7 @@ async function computeHolidayDetails() {
               details: hotelFullDetails,
               bookingUrl: bookingUrl,
             };
-            console.log("Hotel details fetched.");
+            console.error("Hotel details fetched.");
 
             if (hotelPhotosRaw && hotelPhotosRaw.length > 0) {
               hotelPhotosRaw.slice(0, 5).forEach((photoUrl) => {
@@ -291,7 +291,7 @@ async function computeHolidayDetails() {
     }
 
     // --- Activities ---
-    console.log("\nFetching activity details...");
+    console.error("\nFetching activity details...");
     let firstAttractionName = "N/A";
     let correctedLocationForActivity = arrivalLocation;
 
@@ -303,10 +303,10 @@ async function computeHolidayDetails() {
           `Find the closest major city or well-known tourist area to this specific location: ${arrivalLocation}. Your response must just be the city or area name, with no other words or punctuation. For example, if the input is 'Eiffel Tower', you might respond 'Paris'. If the input is 'LHR Airport', you might respond 'London'.`
         );
         correctedLocationForActivity = correctedLocationForActivity.trim();
-        console.log("AI corrected location for activity search:", correctedLocationForActivity);
+        console.error("AI corrected location for activity search:", correctedLocationForActivity);
       } catch (aiError) {
         console.error("Error getting corrected location from AI:", aiError.message);
-        console.log("Falling back to original arrivalLocation for activity search.");
+        console.error("Falling back to original arrivalLocation for activity search.");
       }
     }
 
@@ -329,7 +329,7 @@ async function computeHolidayDetails() {
         const productID = activityAutoCompleteResponse.data.data[0].productId;
 
         if (productID) {
-          console.log("Activity ProductID fetched:", productID);
+          console.error("Activity ProductID fetched:", productID);
           const activitiesOptions = {
             method: "GET",
             url: "https://booking-data.p.rapidapi.com/booking-app/attraction/search",
@@ -363,7 +363,7 @@ async function computeHolidayDetails() {
 
             const activityDetailsResponse = await axios.request(getActivityDetailsOptions);
             const activityFullDetails = activityDetailsResponse.data.data;
-            console.log(`Activity Full Details: ${JSON.stringify(activityFullDetails, null, 4)}`);
+            console.error(`Activity Full Details: ${JSON.stringify(activityFullDetails, null, 4)}`);
             const activityURL = activityFullDetails.ufiDetails.url;
 
             holidayResult.activity = {
@@ -373,7 +373,7 @@ async function computeHolidayDetails() {
               activityURL: activityURL,
               price: activityPrice,
             };
-            console.log("Activity details fetched.");
+            console.error("Activity details fetched.");
           }
         }
 
@@ -387,7 +387,7 @@ async function computeHolidayDetails() {
     };
     
     // --- Generate Titles and Price ---
-    console.log("\nGenerating title and subtitle...");
+    console.error("\nGenerating title and subtitle...");
     let title = `Explore ${arrivalLocation}`;
     let subtitle = `An amazing ${lengthOfStay}-day trip to ${arrivalLocation}.`;
 
@@ -401,7 +401,7 @@ async function computeHolidayDetails() {
         subtitle = await generateAIResponse(
           `Create an enticing, short subtitle for a travel package. Style: "Unwind in Crete with 5 sun-soaked days of crystal-clear waters, ancient ruins and vibrant Greek culture". Destination: ${arrivalLocation}. Hotel: ${hotelName}. Main activity: ${firstAttractionName}. Length: ${lengthOfStay} days. Response must be ONLY the subtitle, no extra words/labels.`
         );
-        console.log("Title and subtitle generated.");
+        console.error("Title and subtitle generated.");
       } catch (aiError) {
         console.error("Error generating AI titles:", aiError.message);
       }
@@ -430,12 +430,12 @@ async function computeHolidayDetails() {
     };
     holidayResult.formattedPrice = `£${totalPrice.toFixed(2)}`;
 
-    console.log("\nPrice calculated:", holidayResult.formattedPrice);
+    console.error("\nPrice calculated:", holidayResult.formattedPrice);
 
     // --- Final Result ---
-    console.log("\n\n--- COMPUTED HOLIDAY PACKAGE ---");
-    console.log(JSON.stringify(holidayResult, null, 2));
-    console.log("\nComputation finished.");
+    console.error("\n\n--- COMPUTED HOLIDAY PACKAGE ---");
+    //console.log(JSON.stringify(holidayResult, null, 2));
+    console.error("\nComputation finished.");
 
     return holidayResult;
   } catch (e) {
@@ -445,5 +445,11 @@ async function computeHolidayDetails() {
   }
 }
 
-// Run the computation
-computeHolidayDetails();
+if (process.argv[2] === "--cli") {
+  computeHolidayDetails().then((result) => {
+    console.log(JSON.stringify(result)); // Send to stdout
+  }).catch((e) => {
+    console.error("JS error:", e);
+    process.exit(1);
+  });
+}

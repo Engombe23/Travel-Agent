@@ -5,3 +5,4 @@
 # Packages
 /node_modules
 /.vscode
+/tools/__pycache__
