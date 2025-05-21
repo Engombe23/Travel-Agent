@@ -21,7 +21,6 @@ const exampleHolidayRequest = {
   arrival_date_coming_back: args.arrival_date_coming_back || "2025-06-08",
 };
 // --- END OF EXAMPLE INPUT DATA ---
-console.log(JSON.stringify(exampleHolidayRequest));
 
 // Helper function to increment date
 function incrementDate(dateString, length) {
@@ -452,9 +451,9 @@ async function computeHolidayDetails() {
   }
 }
 
-if (process.argv[2] === "--cli") {
+if (args.cli) {
   computeHolidayDetails().then((result) => {
-    console.log(JSON.stringify(result)); // Send to stdout
+    console.log(JSON.stringify(result, null, 2)); // Send to stdout
   }).catch((e) => {
     console.error("JS error:", e);
     process.exit(1);
