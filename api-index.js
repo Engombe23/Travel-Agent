@@ -1,20 +1,27 @@
 import axios from "axios";
 import dotenv from "dotenv";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import yargs from "yargs";
+import { hideBin } from "yargs/helpers";
 
 // Load environment variables from .env file
 dotenv.config();
 // --- START OF EXAMPLE INPUT DATA ---
 // Replace these values with your desired test inputs
+
+const args = yargs(hideBin(process.argv)).argv;
+
 const exampleHolidayRequest = {
-  Departure: "LHR", // Example: London Heathrow Airport IATA code
-  Arrival: "CDG", // Example: Paris Charles de Gaulle Airport IATA code
-  Guests: "1",
-  DateLeaving: "2025-09-15", // Use YYYY-MM-DD format
-  StayLength: "5", // In days
-  HolidayType: "City Break",
+  departure_location: args.departure_location || "LHR", // Example: London Heathrow Airport IATA code
+  arrival_location: args.arrival_location || "PAR", // Example: Paris Charles de Gaulle Airport IATA code
+  guests: args.adult_guests || 2,
+  departure_date_leaving: args.departure_date_leaving || "2025-06-01", // Use YYYY-MM-DD format
+  stay_length: args.length_of_stay || 7, // In days
+  holiday_type: args.holiday_type || "City Break",
+  arrival_date_coming_back: args.arrival_date_coming_back || "2025-06-08",
 };
 // --- END OF EXAMPLE INPUT DATA ---
+console.log(JSON.stringify(exampleHolidayRequest));
 
 // Helper function to increment date
 function incrementDate(dateString, length) {
@@ -49,12 +56,12 @@ async function computeHolidayDetails() {
     const holidayResult = {}; // Object to store all results
 
     // Grab data from the example data and set names for each bit
-    const departureLocation = exampleHolidayRequest.Departure;
-    const arrivalLocation = exampleHolidayRequest.Arrival;
-    const adultGuests = exampleHolidayRequest.Guests;
-    const departureDateLeaving = exampleHolidayRequest.DateLeaving;
-    const lengthOfStay = exampleHolidayRequest.StayLength;
-    const holidayType = exampleHolidayRequest.HolidayType;
+    const departureLocation = exampleHolidayRequest.departure_location;
+    const arrivalLocation = exampleHolidayRequest.arrival_location;
+    const adultGuests = exampleHolidayRequest.guests;
+    const departureDateLeaving = exampleHolidayRequest.departure_date_leaving;
+    const lengthOfStay = exampleHolidayRequest.stay_length;
+    const holidayType = exampleHolidayRequest.holiday_type;
     const arrivalDateComingBack = incrementDate(departureDateLeaving, lengthOfStay);
 
     console.error("Input Data:", {

@@ -6,3 +6,5 @@
 /node_modules
 /.vscode
 /tools/__pycache__
+/models/__pycache__
+/agents/__pycache__
