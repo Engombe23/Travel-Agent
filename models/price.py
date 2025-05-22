@@ -1,5 +1,4 @@
 from pydantic import BaseModel
-from typing import Union
 
 class PriceBreakdown(BaseModel):
   outboundFlight: float
@@ -7,3 +6,7 @@ class PriceBreakdown(BaseModel):
   hotel: float
   activity: float
   total: float
+
+class Price(BaseModel):
+  amount: float
+  currency: str = "GBP"
