@@ -43,16 +43,22 @@ class CityToAirportService:
     return [airport for airport in self.airports if airport["city"] == city_name]
 
   def find_first_iata_by_city(self, city_name: str, country_name: str = None) -> str:
+    city_key = city_name.strip().lower()
+    
+    # Check major airports first
+    if city_key in self.major_airports:
+        return self.major_airports[city_key]
+
     matches = self.find_airports_by_city(city_name, country_name)
     if not matches:
-      return None
-      
-    # Try to find an international airport
+        return None
+
+    # Prefer international airport
     for airport in matches:
-      if "international" in airport["name"].lower():
-        return airport["iata"]
-    
-    # If no international airport found, return the first match
+        if "international" in airport["name"].lower():
+            return airport["iata"]
+
+    # Return first match if no international airport
     return matches[0]["iata"]
 
   def find_city_by_iata(self, iata_code: str) -> str:

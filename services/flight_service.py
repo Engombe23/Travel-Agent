@@ -73,6 +73,11 @@ class FlightService(Service):
 
       inbound_flight = Flight.from_api(best_inbound_flight, inbound_flight_url)
 
+      # Price Calculation
+      total_amount = outbound_flight.price.amount + inbound_flight.price.amount
+      total_price = f"{outbound_flight.price.currency}{total_amount:.2f}"
+
+
       return {
         "status": "success",
         "flights": {
@@ -105,7 +110,7 @@ class FlightService(Service):
             "booking_url": inbound_flight_url
           }
         },
-        "total_price": f"£{float(outbound_flight.price.replace('£', '')) + float(inbound_flight.price.replace('£', '')):.2f}"
+        "total_price": total_price
       }
 
     except Exception as e:
