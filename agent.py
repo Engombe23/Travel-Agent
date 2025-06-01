@@ -1,22 +1,26 @@
 import os
 from agents.planner_agent import PlannerAgent
-from models.user_input import UserInput
+from agents.flight_agent import FlightAgent
+from langchain_core.messages import HumanMessage
 from dotenv import load_dotenv
 
 load_dotenv()
 
 api_key = os.environ.get("GOOGLE_API_KEY")
 
-user_input = UserInput(
-    departure_location="LHR",
-    arrival_location="CDG",
-    adult_guests="1",
-    departure_date_leaving="2025-09-15",
-    length_of_stay="5",
-    holiday_type="City Break",
-    arrival_date_coming_back="2025-09-20"
+message = HumanMessage(
+    content=(
+        "Plan a trip for 4 adults from London to Paris starting from 2025-09-15 for 4 days with a few activities"
+    )
 )
 
-agent = PlannerAgent(api_key)
-result = agent.run(user_input)
-print(result)
+planner_agent = PlannerAgent(api_key)
+state = planner_agent.run(message)
+
+flight_agent = FlightAgent(api_key)
+state = flight_agent.run(state)
+
+print("\n🎯 Final Planner State (with Flight):")
+print(state)
+print("\n🛫 Flight Details:")
+print(state.flight)
