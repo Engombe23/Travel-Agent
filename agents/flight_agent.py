@@ -1,41 +1,67 @@
+import os
 from agents.base import Agent
-from models.user_input import UserInput
+from graph.state import PlannerState
 from tools.flight_tool import plan_flight
 from services.airport_lookup import CityToAirportService
-from langchain_core.messages import HumanMessage
+from models.flight import Flight
+from models.price import Price
+from langchain_core.messages import AIMessage
 from langgraph.prebuilt import create_react_agent
+from services.flight_service import FlightService
+from dotenv import load_dotenv
 
+load_dotenv()
 
 class FlightAgent(Agent):
   
   def __init__(self, api_key: str):
+    self.flight_service = FlightService(os.environ.get("SERPAKEY"))
     super().__init__(api_key)
+    
+    self.lookup = CityToAirportService("data/airports.dat")
     self.agent = create_react_agent(
       tools=[plan_flight],
       model=self.llm
     )
-  
-  def run(self, input_data: UserInput) -> dict:
-    # Convert city names to IATA codes
-    self.lookup = CityToAirportService("data/airports.dat")
-    
-    # Get IATA codes for the cities
-    departure_iata = self.lookup.find_first_iata_by_city(input_data.departure_location, "united kingdom")
-    arrival_iata = self.lookup.find_first_iata_by_city(input_data.arrival_location, "france")
+
+  def run(self, state: PlannerState) -> PlannerState:
+    user_data = state.user_input
+
+    # City names to IATA codes
+    departure_iata = self.lookup.find_first_iata_by_city(user_data.departure_location)
+    arrival_iata = self.lookup.find_first_iata_by_city(user_data.arrival_location)
 
     if not departure_iata or not arrival_iata:
-        return {"error": "Could not find IATA codes for one or both cities"}
+      state.messages.append(AIMessage(content="Could not find IATA codes for given cities."))
+      return state
+    
+    # Create a new UserInput with IATA codes instead of city names for flight service
+    flight_input = user_data.model_copy(update={
+        "departure_location": departure_iata,
+        "arrival_location": arrival_iata
+    })
 
-    tool_msg = (
-        f"Use these IATA codes: {departure_iata} for {input_data.departure_location} "
-        f"and {arrival_iata} for {input_data.arrival_location}. "
-        f"Plan a flight from {departure_iata} to {arrival_iata} "
-        f"on {input_data.departure_date_leaving} "
-        f"for {input_data.adult_guests} passenger(s) "
-        f"staying for {input_data.length_of_stay} "
-        f"for a {input_data.holiday_type} "
-        f"and will come back on {input_data.arrival_date_coming_back}."
-    )
+    response = self.flight_service.run(flight_input)
 
-    response = self.agent.invoke({"messages": [HumanMessage(content=tool_msg)]})
-    return response
+    if "error" in response:
+       state.messages.append(AIMessage(content=f"Flight service error: {response['error']}")) 
+       return state
+    
+    flights = response.get("flights", {})
+    outbound_flight_data = flights.get("outbound")
+
+    if not outbound_flight_data:
+      state.messages.append(AIMessage(content="No outbound flight data found in service response."))
+      return state
+    
+    try:
+        # Extract price amount from the Price object
+        price_amount = outbound_flight_data["price"].amount if isinstance(outbound_flight_data["price"], Price) else outbound_flight_data["price"]
+        outbound_flight_data["price"] = price_amount
+        outbound_flight = Flight.from_api(outbound_flight_data, outbound_flight_data.get("booking_url", ""))
+        state.flight = outbound_flight
+        state.messages.append(AIMessage(content=f"Flight details successfully parsed."))
+    except Exception as e:
+        state.messages.append(AIMessage(content=f"Failed to parse flight data: {str(e)}"))
+    
+    return state
