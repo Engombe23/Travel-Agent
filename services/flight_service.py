@@ -1,6 +1,5 @@
-from services.base import Service
-from models.user_input import UserInput
-from models.flight import Flight
+from services import Service
+from models import UserInput, Flight
 import requests
 import json
 

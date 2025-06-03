@@ -1,6 +1,5 @@
-from services.base import Service
-from models.activity import Activity
-from models.price import Price
+from services import Service
+from models import Activity, Price
 import requests
 
 class ActivityService(Service):
