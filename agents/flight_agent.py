@@ -1,13 +1,11 @@
 import os
-from agents.base import Agent
+from agents import Agent
 from graph.state import PlannerState
-from tools.flight_tool import plan_flight
-from services.airport_lookup import CityToAirportService
-from models.flight import Flight
-from models.price import Price
+from tools import plan_flight
+from services import CityToAirportService, FlightService
+from models import Flight, Price
 from langchain_core.messages import AIMessage
 from langgraph.prebuilt import create_react_agent
-from services.flight_service import FlightService
 from dotenv import load_dotenv
 
 load_dotenv()

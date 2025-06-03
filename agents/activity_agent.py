@@ -1,8 +1,8 @@
-from agents.base import Agent
-from tools.activity_tool import plan_activity
+from agents import Agent
+from tools import plan_activity
 from langchain.agents import create_react_agent
 from langgraph.prebuilt import create_react_agent
-from models.activity import Activity
+from models import Activity
 
 class ActivityAgent(Agent):
 
