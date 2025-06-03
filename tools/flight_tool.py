@@ -1,6 +1,6 @@
-from services.flight_service import FlightService
-from models.user_input import UserInput
-from services.airport_lookup import CityToAirportService
+from services import FlightService
+from models import UserInput
+from services import CityToAirportService
 from langchain.tools import tool
 from dotenv import load_dotenv
 import os
