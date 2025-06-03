@@ -1,8 +1,6 @@
 from langgraph.graph import StateGraph, START, END
 from graph.state import PlannerState
-from langchain_core.messages.tool import ToolMessage
-from agents.flight_agent import FlightAgent
-from agents.planner_agent import PlannerAgent
+from agents import FlightAgent, PlannerAgent
 
 graph = StateGraph(PlannerState)
 
