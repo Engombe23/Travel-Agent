@@ -42,8 +42,11 @@ def plan_flight(departure_location: str, arrival_location: str, adult_guests: st
     if not api_key:
         return json.dumps({"error": "Serpa key not found in environment variables"})
 
+    # SerpAPI Base URL
+    base_url = "https://serpapi.com/search.json"
+
     # Call FlightService with IATA codes
-    flight_service = FlightService(api_key)
+    flight_service = FlightService(api_key, base_url)
     response = flight_service.run(flight_input)
     
     # Convert response to string

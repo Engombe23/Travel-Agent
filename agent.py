@@ -13,13 +13,12 @@ message = HumanMessage(content=initial_content)
 planner_agent = PlannerAgent(api_key)
 state = planner_agent.run(message)
 
-#flight_agent = FlightAgent(api_key)
-#state = flight_agent.run(state)
+flight_agent = FlightAgent(api_key)
+state = flight_agent.run(state)
 
-print("\n🎯 Final Planner State (with user input):")
+print("\n🎯 Final Planner State (with Flight):")
 print(state)
-#print("\n🛫 Flight Details:")
-#print(state.flight)
-
+print("\n🛫 Flight Details:")
+print(state.flight)
 
 

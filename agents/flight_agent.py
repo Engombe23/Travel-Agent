@@ -3,7 +3,6 @@ from agents import Agent
 from graph.state import PlannerState
 from tools import plan_flight
 from services import CityToAirportService, FlightService
-from models import Flight, Price
 from langchain_core.messages import AIMessage
 from langgraph.prebuilt import create_react_agent
 from dotenv import load_dotenv
@@ -13,7 +12,7 @@ load_dotenv()
 class FlightAgent(Agent):
   
   def __init__(self, api_key: str):
-    self.flight_service = FlightService(os.environ.get("SERPAKEY"))
+    self.flight_service = FlightService(os.environ.get("SERPAKEY"), base_url="https://serpapi.com/search.json")
     super().__init__(api_key)
     
     self.lookup = CityToAirportService("data/airports.dat")
@@ -46,17 +45,13 @@ class FlightAgent(Agent):
        return state
     
     flights = response.get("flights", {})
-    outbound_flight_data = flights.get("outbound")
+    outbound_flight = flights.get("outbound")
 
-    if not outbound_flight_data:
+    if not outbound_flight:
       state.messages.append(AIMessage(content="No outbound flight data found in service response."))
       return state
     
     try:
-        # Extract price amount from the Price object
-        price_amount = outbound_flight_data["price"].amount if isinstance(outbound_flight_data["price"], Price) else outbound_flight_data["price"]
-        outbound_flight_data["price"] = price_amount
-        outbound_flight = Flight.from_api(outbound_flight_data, outbound_flight_data.get("booking_url", ""))
         state.flight = outbound_flight
         state.messages.append(AIMessage(content=f"Flight details successfully parsed."))
     except Exception as e:

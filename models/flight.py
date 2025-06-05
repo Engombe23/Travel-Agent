@@ -1,8 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional, List
-from models.airport import AirportInfo
-from models.carbon_emissions import CarbonEmissions
-from models.price import Price
+from models import AirportInfo, CarbonEmissions, Price
 
 class FlightSegment(BaseModel):
   departure_airport: AirportInfo
@@ -31,7 +29,6 @@ class Flight(BaseModel):
   departureDetails: AirportInfo
   arrivalDetails: AirportInfo
   flightURL: str
-  price: Price
 
   @property
   def airline(self) -> Optional[str]:
@@ -68,16 +65,15 @@ class Flight(BaseModel):
   @property
   def price_str(self) -> Optional[str]:
       # Return string representation of price (e.g. "£123.45")
-      if self.price:
-          # Assuming your Price model has a __str__ or similar
-          return str(self.price)
+      if self.details and self.details.price:
+          return str(self.details.price)
       return None
 
   @property
   def price_float(self) -> Optional[float]:
       # Remove currency symbol and convert to float
-      if self.price:
-          price_str = str(self.price).replace('£', '').strip()
+      if self.details and self.details.price:
+          price_str = str(self.details.price).replace('£', '').strip()
           try:
               return float(price_str)
           except ValueError:
@@ -121,7 +117,7 @@ class Flight(BaseModel):
                 time=arrival.get("time")
             ),
             duration=flight.get("duration", 0),
-            airplane=flight.get("aircraft"),
+            airplane=flight.get("airplane"),
             airline=flight.get("airline"),
             airline_logo=flight.get("airline_logo"),
             travel_class=flight.get("travel_class"),
@@ -136,15 +132,15 @@ class Flight(BaseModel):
                 departure_airport=AirportInfo(
                     name=seg.get("departure_airport", {}).get("name", ""),
                     id=seg.get("departure_airport", {}).get("id", ""),
-                    time=seg.get("departure_time", "")
+                    time=seg.get("departure_airport", {}).get("time", "")
                 ),
                 arrival_airport=AirportInfo(
                     name=seg.get("arrival_airport", {}).get("name", ""),
                     id=seg.get("arrival_airport", {}).get("id", ""),
-                    time=seg.get("arrival_time", "")
+                    time=seg.get("arrival_airport", {}).get("time", "")
                 ),
                 duration=seg.get("duration", 0),
-                airplane=seg.get("aircraft"),
+                airplane=seg.get("airplane"),
                 airline=seg.get("airline"),
                 airline_logo=seg.get("airline_logo"),
                 travel_class=seg.get("travel_class"),
@@ -159,7 +155,7 @@ class Flight(BaseModel):
 
     flight_details = FlightDetails(
         flights=segments,
-        total_duration=int(flight.get("duration", 0) or 0),
+        total_duration=int(flight.get("total_duration", 0) or 0),
         carbon_emissions=CarbonEmissions(
           this_flight=flight.get("carbon_emissions", {}).get("this_flight", 0),
           typical_for_this_route=flight.get("carbon_emissions", {}).get("typical_for_this_route", 0),
@@ -179,6 +175,5 @@ class Flight(BaseModel):
         details=flight_details,
         departureDetails=first_segment.departure_airport if first_segment else AirportInfo(name="", id="", time=None),
         arrivalDetails=first_segment.arrival_airport if first_segment else AirportInfo(name="", id="", time=None),
-        flightURL=metadata_url,
-        price=flight_details.price
+        flightURL=metadata_url
     )
