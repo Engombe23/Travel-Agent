@@ -39,10 +39,16 @@ class SerpAPIAdapter(FlightAdapter):
       if "error" in data:
         return {"error": f"SerpAPI error: {data['error']}"}
       
-      if "best_flights" not in data:
-        return {"error": f"Unexpected API response structure: {json.dumps(data)}"}
+      # Try to get flight data from either best_flights or other_flights
+      best_flight = None
+      if "best_flights" in data and data["best_flights"]:
+        best_flight = data["best_flights"][0]
+      elif "other_flights" in data and data["other_flights"]:
+        best_flight = data["other_flights"][0]
+      
+      if not best_flight:
+        return {"error": f"No flight data found in response: {json.dumps(data)}"}
 
-      best_flight = data.get("best_flights", [{}])[0]      
       flight_url = data.get("search_metadata", {}).get("google_flights_url", "")
       flight = Flight.from_api(best_flight, flight_url)
 
