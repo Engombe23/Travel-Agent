@@ -1,6 +1,8 @@
 from pydantic import BaseModel
 from typing import Optional, List
-from models import AirportInfo, CarbonEmissions, Price
+from models.airport import AirportInfo
+from models.carbon_emissions import CarbonEmissions
+from models.price import Price
 
 class FlightSegment(BaseModel):
   departure_airport: AirportInfo
