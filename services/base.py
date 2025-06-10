@@ -1,7 +1,6 @@
-from abc import ABC, abstractmethod
+from abc import ABC
 
 class Service(ABC):
 
-  @abstractmethod
   def run(self, input_data: dict) -> dict:
     pass

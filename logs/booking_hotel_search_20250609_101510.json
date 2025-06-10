@@ -1,0 +1,1289 @@
+{
+  "status": true,
+  "message": "Success",
+  "timestamp": 1749460510520,
+  "data": {
+    "hotels": [
+      {
+        "hotel_id": 57861,
+        "accessibilityLabel": "Hotel Trianon Rive Gauche.\n4 out of 5 stars.\nThis is a Preferred Plus property.\n8.2 Very good 4471 reviews.\n\u200e6th arr.\u202c \u2022 \u200e1.2 km from centre\u202c.\nLimited-time Deal.\n 2 hotel rooms : 2\u00a0beds.\nOriginal price 2589 GBP. Current price 1143 GBP..\nIncludes taxes and charges.",
+        "property": {
+          "checkout": {
+            "untilTime": "12:00",
+            "fromTime": "00:00"
+          },
+          "reviewCount": 4471,
+          "blockIds": [
+            "5786101_99550931_0_2_0_548370",
+            "5786101_99550931_0_2_0_548370"
+          ],
+          "checkin": {
+            "fromTime": "15:00",
+            "untilTime": "00:00"
+          },
+          "qualityClass": 0,
+          "countryCode": "fr",
+          "rankingPosition": 0,
+          "ufi": -1456928,
+          "position": 0,
+          "isPreferredPlus": true,
+          "priceBreakdown": {
+            "taxExceptions": [],
+            "benefitBadges": [
+              {
+                "identifier": "Limited Time Deal",
+                "variant": "constructive",
+                "text": "Limited-time Deal",
+                "explanation": "Limited-time Deal"
+              }
+            ],
+            "grossPrice": {
+              "currency": "GBP",
+              "value": 1142.61311390743
+            },
+            "strikethroughPrice": {
+              "currency": "GBP",
+              "value": 2588.82624300412
+            }
+          },
+          "reviewScoreWord": "Very good",
+          "isFirstPage": true,
+          "mainPhotoId": 331794063,
+          "longitude": 2.34090998768806,
+          "currency": "EUR",
+          "optOutFromGalleryChanges": 1,
+          "checkoutDate": "2025-07-13",
+          "checkinDate": "2025-07-10",
+          "photoUrls": [
+            "https://cf.bstatic.com/xdata/images/hotel/square500/331794063.jpg?k=8563e44bbbd040247b1358f77dccfd21ac979dafa70760a109044d1f883a6235&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square1024/331794063.jpg?k=8563e44bbbd040247b1358f77dccfd21ac979dafa70760a109044d1f883a6235&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square2000/331794063.jpg?k=8563e44bbbd040247b1358f77dccfd21ac979dafa70760a109044d1f883a6235&o="
+          ],
+          "reviewScore": 8.2,
+          "name": "Hotel Trianon Rive Gauche",
+          "propertyClass": 4,
+          "accuratePropertyClass": 4,
+          "id": 57861,
+          "wishlistName": "Paris",
+          "isPreferred": true,
+          "latitude": 48.8488532623949
+        }
+      },
+      {
+        "hotel_id": 50731,
+        "accessibilityLabel": "Timhotel Montmartre.\n3 out of 5 stars.\nThis is a Preferred Plus property.\n8.2 Very good 2375 reviews.\n\u200e18th arr.\u202c \u2022 \u200e3.4 km from centre\u202c.\nMobile-only price.\n 2 hotel rooms : 2\u00a0beds.\nOriginal price 993 GBP. Current price 810 GBP..\nIncludes taxes and charges.",
+        "property": {
+          "propertyClass": 3,
+          "accuratePropertyClass": 3,
+          "latitude": 48.8858097533656,
+          "wishlistName": "Paris",
+          "id": 50731,
+          "isPreferred": true,
+          "reviewScore": 8.2,
+          "name": "Timhotel Montmartre",
+          "checkinDate": "2025-07-10",
+          "photoUrls": [
+            "https://cf.bstatic.com/xdata/images/hotel/square500/407826703.jpg?k=4af625e4dba53abd502a035380bcf2ea26df4834271a50ff9e25fd128c980d00&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square1024/407826703.jpg?k=4af625e4dba53abd502a035380bcf2ea26df4834271a50ff9e25fd128c980d00&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square2000/407826703.jpg?k=4af625e4dba53abd502a035380bcf2ea26df4834271a50ff9e25fd128c980d00&o="
+          ],
+          "checkoutDate": "2025-07-13",
+          "mainPhotoId": 407826703,
+          "longitude": 2.33778655529022,
+          "currency": "EUR",
+          "optOutFromGalleryChanges": 0,
+          "ufi": -1456928,
+          "position": 1,
+          "reviewScoreWord": "Very good",
+          "isFirstPage": true,
+          "priceBreakdown": {
+            "taxExceptions": [],
+            "benefitBadges": [
+              {
+                "identifier": "Mobile Rate",
+                "variant": "constructive",
+                "text": "Mobile-only price",
+                "explanation": "Mobile-only price"
+              }
+            ],
+            "grossPrice": {
+              "currency": "GBP",
+              "value": 809.510229639926
+            },
+            "strikethroughPrice": {
+              "currency": "GBP",
+              "value": 992.842270538783
+            }
+          },
+          "isPreferredPlus": true,
+          "qualityClass": 0,
+          "rankingPosition": 1,
+          "countryCode": "fr",
+          "blockIds": [
+            "5073109_93699324_0_2_0",
+            "5073109_93699324_0_2_0"
+          ],
+          "checkout": {
+            "untilTime": "12:00",
+            "fromTime": "00:00"
+          },
+          "reviewCount": 2375,
+          "checkin": {
+            "fromTime": "14:00",
+            "untilTime": "00:00"
+          }
+        }
+      },
+      {
+        "hotel_id": 7825691,
+        "accessibilityLabel": "UCPA SPORT STATION HOSTEL PARIS.\nThis is a Preferred Plus property.\n8.0 Very good 7882 reviews.\n\u200e19th arr.\u202c \u2022 \u200e4.6 km from centre\u202c.\nMobile-only price.\n 2 beds in dormitories : 2\u00a0beds.\nOriginal price 347 GBP. Current price 313 GBP..\nIncludes taxes and charges.",
+        "property": {
+          "propertyClass": 0,
+          "accuratePropertyClass": 0,
+          "latitude": 48.8961016559366,
+          "wishlistName": "Paris",
+          "id": 7825691,
+          "isPreferred": true,
+          "reviewScore": 8,
+          "name": "UCPA SPORT STATION HOSTEL PARIS",
+          "checkinDate": "2025-07-10",
+          "photoUrls": [
+            "https://cf.bstatic.com/xdata/images/hotel/square500/483304234.jpg?k=b292de296a3635f32640ce7eab12f27f05cfe249da3e7ed78c1c81f5a92eebf6&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square1024/483304234.jpg?k=b292de296a3635f32640ce7eab12f27f05cfe249da3e7ed78c1c81f5a92eebf6&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square2000/483304234.jpg?k=b292de296a3635f32640ce7eab12f27f05cfe249da3e7ed78c1c81f5a92eebf6&o="
+          ],
+          "checkoutDate": "2025-07-13",
+          "mainPhotoId": 483304234,
+          "currency": "EUR",
+          "optOutFromGalleryChanges": 0,
+          "longitude": 2.3718286455078,
+          "ufi": -1456928,
+          "position": 2,
+          "isFirstPage": true,
+          "reviewScoreWord": "Very good",
+          "isPreferredPlus": true,
+          "priceBreakdown": {
+            "taxExceptions": [],
+            "grossPrice": {
+              "value": 313.215390899123,
+              "currency": "GBP"
+            },
+            "benefitBadges": [
+              {
+                "identifier": "Mobile Rate",
+                "text": "Mobile-only price",
+                "variant": "constructive",
+                "explanation": "Mobile-only price"
+              }
+            ],
+            "strikethroughPrice": {
+              "currency": "GBP",
+              "value": 346.557674446449
+            }
+          },
+          "qualityClass": 0,
+          "rankingPosition": 2,
+          "countryCode": "fr",
+          "blockIds": [
+            "782569105_337719933_1_2_0",
+            "782569105_337719933_1_2_0"
+          ],
+          "reviewCount": 7882,
+          "checkout": {
+            "untilTime": "10:00",
+            "fromTime": "01:00"
+          },
+          "checkin": {
+            "fromTime": "15:00",
+            "untilTime": "23:00"
+          }
+        }
+      },
+      {
+        "hotel_id": 53678,
+        "accessibilityLabel": "Chalgrin Boutique Hotel.\n4 out of 5 stars.\nThis is a Preferred Plus property.\n8.0 Very good 1051 reviews.\n\u200e16th arr.\u202c \u2022 \u200e4.9 km from centre\u202c.\n 2 hotel rooms : 2\u00a0beds.\nOriginal price 1877 GBP. Current price 1693 GBP..\nIncludes taxes and charges.",
+        "property": {
+          "isPreferredPlus": true,
+          "priceBreakdown": {
+            "grossPrice": {
+              "value": 1693.1312622555,
+              "currency": "GBP"
+            },
+            "taxExceptions": [],
+            "benefitBadges": [],
+            "strikethroughPrice": {
+              "currency": "GBP",
+              "value": 1876.51382176579
+            }
+          },
+          "reviewScoreWord": "Very good",
+          "isFirstPage": true,
+          "ufi": -1456928,
+          "position": 3,
+          "longitude": 2.2897756844759,
+          "currency": "EUR",
+          "optOutFromGalleryChanges": 0,
+          "mainPhotoId": 185552333,
+          "checkin": {
+            "fromTime": "15:00",
+            "untilTime": "00:00"
+          },
+          "checkout": {
+            "untilTime": "12:00",
+            "fromTime": "00:00"
+          },
+          "reviewCount": 1051,
+          "blockIds": [
+            "5367822_93699760_1_1_0",
+            "5367822_93699760_1_1_0"
+          ],
+          "countryCode": "fr",
+          "rankingPosition": 3,
+          "qualityClass": 0,
+          "name": "Chalgrin Boutique Hotel",
+          "reviewScore": 8,
+          "wishlistName": "Paris",
+          "id": 53678,
+          "isPreferred": true,
+          "latitude": 48.8743451520899,
+          "propertyClass": 4,
+          "accuratePropertyClass": 4,
+          "checkoutDate": "2025-07-13",
+          "photoUrls": [
+            "https://cf.bstatic.com/xdata/images/hotel/square500/185552333.jpg?k=7083b92f417544d605240d8f8a96685e58a61dcb080fa97ddb838512469b0bc9&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square1024/185552333.jpg?k=7083b92f417544d605240d8f8a96685e58a61dcb080fa97ddb838512469b0bc9&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square2000/185552333.jpg?k=7083b92f417544d605240d8f8a96685e58a61dcb080fa97ddb838512469b0bc9&o="
+          ],
+          "checkinDate": "2025-07-10"
+        }
+      },
+      {
+        "hotel_id": 53202,
+        "accessibilityLabel": "Auteuil Tour Eiffel.\n4 out of 5 stars.\nThis is a Preferred property.\n8.4 Very good 1949 reviews.\n\u200e16th arr.\u202c \u2022 \u200e6 km from centre\u202c.\n 2 hotel rooms : 2\u00a0beds.\n1530 GBP.\nIncludes taxes and charges.",
+        "property": {
+          "priceBreakdown": {
+            "taxExceptions": [],
+            "benefitBadges": [],
+            "grossPrice": {
+              "currency": "GBP",
+              "value": 1530.4613334337
+            }
+          },
+          "isFirstPage": true,
+          "reviewScoreWord": "Very good",
+          "position": 4,
+          "ufi": -1456928,
+          "optOutFromGalleryChanges": 0,
+          "longitude": 2.27523297049629,
+          "currency": "EUR",
+          "mainPhotoId": 165439433,
+          "checkin": {
+            "untilTime": "00:00",
+            "fromTime": "15:00"
+          },
+          "reviewCount": 1949,
+          "checkout": {
+            "untilTime": "12:00",
+            "fromTime": "00:00"
+          },
+          "blockIds": [
+            "5320218_93699620_1_1_0",
+            "5320218_93699620_1_1_0"
+          ],
+          "countryCode": "fr",
+          "rankingPosition": 4,
+          "qualityClass": 0,
+          "name": "Auteuil Tour Eiffel",
+          "reviewScore": 8.4,
+          "isPreferred": true,
+          "id": 53202,
+          "wishlistName": "Paris",
+          "latitude": 48.8505639310974,
+          "accuratePropertyClass": 4,
+          "propertyClass": 4,
+          "checkoutDate": "2025-07-13",
+          "photoUrls": [
+            "https://cf.bstatic.com/xdata/images/hotel/square500/165439433.jpg?k=bea85ed9e0e7f72e68a05775a184269714f26ba4e036b991e95d762fa9f74cba&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square1024/165439433.jpg?k=bea85ed9e0e7f72e68a05775a184269714f26ba4e036b991e95d762fa9f74cba&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square2000/165439433.jpg?k=bea85ed9e0e7f72e68a05775a184269714f26ba4e036b991e95d762fa9f74cba&o="
+          ],
+          "checkinDate": "2025-07-10"
+        }
+      },
+      {
+        "hotel_id": 55351,
+        "accessibilityLabel": "Hotel Vacances Bleues Provinces Opera.\n3 out of 5 stars.\nThis is a Preferred Plus property.\n8.5 Very good 6002 reviews.\n\u200e10th arr.\u202c \u2022 \u200e1.7 km from centre\u202c.\nMobile-only price.\n 2 hotel rooms : 2\u00a0beds.\nOriginal price 1023 GBP. Current price 834 GBP..\nIncludes taxes and charges.",
+        "property": {
+          "checkoutDate": "2025-07-13",
+          "photoUrls": [
+            "https://cf.bstatic.com/xdata/images/hotel/square500/332279742.jpg?k=c4042b00f30de8bb4af7d87579c2e22337a64e7a804e8bcb88408bb68c9ace15&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square1024/332279742.jpg?k=c4042b00f30de8bb4af7d87579c2e22337a64e7a804e8bcb88408bb68c9ace15&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square2000/332279742.jpg?k=c4042b00f30de8bb4af7d87579c2e22337a64e7a804e8bcb88408bb68c9ace15&o="
+          ],
+          "checkinDate": "2025-07-10",
+          "name": "Hotel Vacances Bleues Provinces Opera",
+          "reviewScore": 8.5,
+          "wishlistName": "Paris",
+          "id": 55351,
+          "isPreferred": true,
+          "latitude": 48.8717002212834,
+          "propertyClass": 3,
+          "accuratePropertyClass": 3,
+          "checkin": {
+            "fromTime": "15:00",
+            "untilTime": "00:00"
+          },
+          "checkout": {
+            "fromTime": "07:00",
+            "untilTime": "11:00"
+          },
+          "reviewCount": 6002,
+          "blockIds": [
+            "5535110_88532137_0_2_0",
+            "5535110_88532137_0_2_0"
+          ],
+          "countryCode": "fr",
+          "rankingPosition": 5,
+          "qualityClass": 0,
+          "isPreferredPlus": true,
+          "priceBreakdown": {
+            "taxExceptions": [],
+            "benefitBadges": [
+              {
+                "text": "Mobile-only price",
+                "variant": "constructive",
+                "explanation": "Mobile-only price",
+                "identifier": "Mobile Rate"
+              }
+            ],
+            "grossPrice": {
+              "currency": "GBP",
+              "value": 834.062274797502
+            },
+            "strikethroughPrice": {
+              "currency": "GBP",
+              "value": 1023.15343739999
+            }
+          },
+          "isFirstPage": true,
+          "reviewScoreWord": "Very good",
+          "ufi": -1456928,
+          "position": 5,
+          "optOutFromGalleryChanges": 0,
+          "currency": "EUR",
+          "longitude": 2.34954133629799,
+          "mainPhotoId": 332279742
+        }
+      },
+      {
+        "hotel_id": 53718,
+        "accessibilityLabel": "Novotel Paris Centre Tour Eiffel.\n4 out of 5 stars.\nThis is a Preferred property.\n7.6 Good 5749 reviews.\n\u200e15th arr.\u202c \u2022 \u200e5 km from centre\u202c.\n2\u00a0beds.\nOriginal price 1296 GBP. Current price 1216 GBP..\nIncludes taxes and charges.\nFree cancellation.\nNo prepayment needed.",
+        "property": {
+          "blockIds": [
+            "5371802_376291181_1_33_0",
+            "5371802_376291181_1_33_0"
+          ],
+          "reviewCount": 5749,
+          "checkout": {
+            "fromTime": "00:00",
+            "untilTime": "12:00"
+          },
+          "checkin": {
+            "untilTime": "00:00",
+            "fromTime": "15:00"
+          },
+          "qualityClass": 0,
+          "rankingPosition": 6,
+          "countryCode": "fr",
+          "ufi": -1456928,
+          "position": 6,
+          "isFirstPage": true,
+          "reviewScoreWord": "Good",
+          "priceBreakdown": {
+            "strikethroughPrice": {
+              "value": 1295.83606239082,
+              "currency": "GBP"
+            },
+            "taxExceptions": [],
+            "benefitBadges": [],
+            "grossPrice": {
+              "currency": "GBP",
+              "value": 1216.26924938016
+            }
+          },
+          "mainPhotoId": 276090071,
+          "optOutFromGalleryChanges": 1,
+          "currency": "EUR",
+          "longitude": 2.28327758604792,
+          "checkoutDate": "2025-07-13",
+          "checkinDate": "2025-07-10",
+          "photoUrls": [
+            "https://cf.bstatic.com/xdata/images/hotel/square500/276090071.jpg?k=1b90e295fcbea9b85abb794f027f72ed478019fa55d94aa9777975d999419562&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square1024/276090071.jpg?k=1b90e295fcbea9b85abb794f027f72ed478019fa55d94aa9777975d999419562&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square2000/276090071.jpg?k=1b90e295fcbea9b85abb794f027f72ed478019fa55d94aa9777975d999419562&o="
+          ],
+          "reviewScore": 7.6,
+          "name": "Novotel Paris Centre Tour Eiffel",
+          "propertyClass": 4,
+          "accuratePropertyClass": 4,
+          "latitude": 48.8500094361255,
+          "wishlistName": "Paris",
+          "id": 53718,
+          "isPreferred": true
+        }
+      },
+      {
+        "hotel_id": 272630,
+        "accessibilityLabel": "H\u00f4tel Eug\u00e9nie.\n3 out of 5 stars.\nThis is a Preferred Plus property.\n8.0 Very good 2101 reviews.\n\u200e6th arr.\u202c \u2022 \u200e800 m from centre\u202c.\nMobile-only price.\n 2 hotel rooms : 2\u00a0beds.\nOriginal price 1746 GBP. Current price 1419 GBP..\nIncludes taxes and charges.",
+        "property": {
+          "ufi": -1456928,
+          "position": 7,
+          "reviewScoreWord": "Very good",
+          "isFirstPage": true,
+          "priceBreakdown": {
+            "strikethroughPrice": {
+              "currency": "GBP",
+              "value": 1745.56958092538
+            },
+            "taxExceptions": [],
+            "benefitBadges": [
+              {
+                "variant": "constructive",
+                "text": "Mobile-only price",
+                "explanation": "Mobile-only price",
+                "identifier": "Mobile Rate"
+              }
+            ],
+            "grossPrice": {
+              "currency": "GBP",
+              "value": 1419.21935105307
+            }
+          },
+          "isPreferredPlus": true,
+          "mainPhotoId": 65061442,
+          "currency": "EUR",
+          "longitude": 2.34198957681656,
+          "optOutFromGalleryChanges": 0,
+          "blockIds": [
+            "27263001_88924278_0_2_0",
+            "27263001_88924278_0_2_0"
+          ],
+          "checkout": {
+            "untilTime": "12:00",
+            "fromTime": "00:00"
+          },
+          "reviewCount": 2101,
+          "checkin": {
+            "untilTime": "00:00",
+            "fromTime": "14:00"
+          },
+          "qualityClass": 0,
+          "rankingPosition": 7,
+          "countryCode": "fr",
+          "reviewScore": 8,
+          "name": "H\u00f4tel Eug\u00e9nie",
+          "accuratePropertyClass": 3,
+          "propertyClass": 3,
+          "latitude": 48.8532850350008,
+          "wishlistName": "Paris",
+          "id": 272630,
+          "isPreferred": true,
+          "checkoutDate": "2025-07-13",
+          "checkinDate": "2025-07-10",
+          "photoUrls": [
+            "https://cf.bstatic.com/xdata/images/hotel/square500/65061442.jpg?k=0ff39afa13d06954ce5c92864eaa75c164a8eea47a5bed4fdcd75be4253daf21&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square1024/65061442.jpg?k=0ff39afa13d06954ce5c92864eaa75c164a8eea47a5bed4fdcd75be4253daf21&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square2000/65061442.jpg?k=0ff39afa13d06954ce5c92864eaa75c164a8eea47a5bed4fdcd75be4253daf21&o="
+          ]
+        }
+      },
+      {
+        "hotel_id": 2609228,
+        "accessibilityLabel": "H\u00f4tel de L'Esperance.\n4 out of 5 stars.\nThis is a Preferred Plus property.\n8.4 Very good 2988 reviews.\n\u200e5th arr.\u202c \u2022 \u200e2.1 km from centre\u202c.\n 2 hotel rooms : 2\u00a0beds.\nOriginal price 1543 GBP. Current price 1393 GBP..\nIncludes taxes and charges.",
+        "property": {
+          "checkoutDate": "2025-07-13",
+          "photoUrls": [
+            "https://cf.bstatic.com/xdata/images/hotel/square500/289009461.jpg?k=7ba602b2b29f4089415c7667310bd2e906a962675965fc762beed680fbf8e2b9&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square1024/289009461.jpg?k=7ba602b2b29f4089415c7667310bd2e906a962675965fc762beed680fbf8e2b9&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square2000/289009461.jpg?k=7ba602b2b29f4089415c7667310bd2e906a962675965fc762beed680fbf8e2b9&o="
+          ],
+          "checkinDate": "2025-07-10",
+          "name": "H\u00f4tel de L'Esperance",
+          "reviewScore": 8.4,
+          "isPreferred": true,
+          "wishlistName": "Paris",
+          "id": 2609228,
+          "latitude": 48.8381576,
+          "propertyClass": 4,
+          "accuratePropertyClass": 4,
+          "checkin": {
+            "fromTime": "15:00",
+            "untilTime": "00:00"
+          },
+          "checkout": {
+            "fromTime": "00:00",
+            "untilTime": "12:00"
+          },
+          "reviewCount": 2988,
+          "blockIds": [
+            "260922801_104860512_1_2_0",
+            "260922801_104860512_1_2_0"
+          ],
+          "countryCode": "fr",
+          "rankingPosition": 8,
+          "qualityClass": 0,
+          "priceBreakdown": {
+            "strikethroughPrice": {
+              "value": 1543.09098629253,
+              "currency": "GBP"
+            },
+            "taxExceptions": [],
+            "grossPrice": {
+              "value": 1393.05071032957,
+              "currency": "GBP"
+            },
+            "benefitBadges": []
+          },
+          "isPreferredPlus": true,
+          "isFirstPage": true,
+          "reviewScoreWord": "Very good",
+          "position": 8,
+          "ufi": -1456928,
+          "currency": "EUR",
+          "longitude": 2.34961550000003,
+          "optOutFromGalleryChanges": 0,
+          "mainPhotoId": 289009461
+        }
+      },
+      {
+        "hotel_id": 241016,
+        "accessibilityLabel": "The ReMIX Hotel.\n4 out of 5 stars.\nThis is a Preferred Plus property.\n8.1 Very good 6075 reviews.\n\u200e19th arr.\u202c \u2022 \u200e5 km from centre\u202c.\n 2 hotel rooms : 4\u00a0beds.\nOriginal price 982 GBP. Current price 762 GBP..\nIncludes taxes and charges.",
+        "property": {
+          "ufi": -1456928,
+          "position": 9,
+          "isPreferredPlus": true,
+          "priceBreakdown": {
+            "strikethroughPrice": {
+              "value": 982.334399360232,
+              "currency": "GBP"
+            },
+            "grossPrice": {
+              "currency": "GBP",
+              "value": 761.517548776351
+            },
+            "taxExceptions": [],
+            "benefitBadges": []
+          },
+          "reviewScoreWord": "Very good",
+          "isFirstPage": true,
+          "mainPhotoId": 223749651,
+          "currency": "EUR",
+          "longitude": 2.38529652357101,
+          "optOutFromGalleryChanges": 0,
+          "reviewCount": 6075,
+          "checkout": {
+            "untilTime": "12:00",
+            "fromTime": "00:00"
+          },
+          "blockIds": [
+            "24101612_94359968_1_33_0",
+            "24101612_94359968_1_33_0"
+          ],
+          "checkin": {
+            "fromTime": "15:00",
+            "untilTime": "00:00"
+          },
+          "qualityClass": 0,
+          "countryCode": "fr",
+          "rankingPosition": 9,
+          "reviewScore": 8.1,
+          "name": "The ReMIX Hotel",
+          "propertyClass": 4,
+          "accuratePropertyClass": 4,
+          "wishlistName": "Paris",
+          "id": 241016,
+          "isPreferred": true,
+          "latitude": 48.8969358144295,
+          "checkoutDate": "2025-07-13",
+          "checkinDate": "2025-07-10",
+          "photoUrls": [
+            "https://cf.bstatic.com/xdata/images/hotel/square500/223749651.jpg?k=101090407b27d00dad3fb538641ecc1b750627f7d0e870bbc0ea2bef81788f52&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square1024/223749651.jpg?k=101090407b27d00dad3fb538641ecc1b750627f7d0e870bbc0ea2bef81788f52&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square2000/223749651.jpg?k=101090407b27d00dad3fb538641ecc1b750627f7d0e870bbc0ea2bef81788f52&o="
+          ]
+        }
+      },
+      {
+        "hotel_id": 243442,
+        "accessibilityLabel": "Austin's Arts Et Metiers Hotel.\n3 out of 5 stars.\nThis is a Preferred Plus property.\n8.3 Very good 2651 reviews.\n\u200e3rd arr.\u202c \u2022 \u200e1.1 km from centre\u202c.\nGetaway Deal.\n 2 hotel rooms : 2\u00a0beds.\nOriginal price 2049 GBP. Current price 1428 GBP..\nIncludes taxes and charges.",
+        "property": {
+          "propertyClass": 3,
+          "accuratePropertyClass": 3,
+          "isPreferred": true,
+          "wishlistName": "Paris",
+          "id": 243442,
+          "latitude": 48.8660109385804,
+          "reviewScore": 8.3,
+          "name": "Austin's Arts Et Metiers Hotel",
+          "checkinDate": "2025-07-10",
+          "photoUrls": [
+            "https://cf.bstatic.com/xdata/images/hotel/square500/45241900.jpg?k=2b8d40d437558704537ec8e695052c7521136c516d0438614f35a7fa0a1034ab&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square1024/45241900.jpg?k=2b8d40d437558704537ec8e695052c7521136c516d0438614f35a7fa0a1034ab&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square2000/45241900.jpg?k=2b8d40d437558704537ec8e695052c7521136c516d0438614f35a7fa0a1034ab&o="
+          ],
+          "checkoutDate": "2025-07-13",
+          "mainPhotoId": 45241900,
+          "currency": "EUR",
+          "longitude": 2.35709756601864,
+          "optOutFromGalleryChanges": 0,
+          "position": 10,
+          "ufi": -1456928,
+          "priceBreakdown": {
+            "taxExceptions": [],
+            "grossPrice": {
+              "currency": "GBP",
+              "value": 1428.39689879716
+            },
+            "benefitBadges": [
+              {
+                "text": "Getaway Deal",
+                "variant": "constructive",
+                "explanation": "Getaway Deal",
+                "identifier": "Getaway 2021 Deals"
+              }
+            ],
+            "strikethroughPrice": {
+              "value": 2048.8159658346,
+              "currency": "GBP"
+            }
+          },
+          "isPreferredPlus": true,
+          "isFirstPage": true,
+          "reviewScoreWord": "Very good",
+          "qualityClass": 0,
+          "countryCode": "fr",
+          "rankingPosition": 10,
+          "reviewCount": 2651,
+          "checkout": {
+            "fromTime": "00:00",
+            "untilTime": "11:00"
+          },
+          "blockIds": [
+            "24344202_395228337_1_2_0",
+            "24344202_395228337_1_2_0"
+          ],
+          "checkin": {
+            "untilTime": "00:00",
+            "fromTime": "14:00"
+          }
+        }
+      },
+      {
+        "hotel_id": 547974,
+        "accessibilityLabel": "ibis Paris Gare du Nord Ch\u00e2teau Landon 10\u00e8me.\n3 out of 5 stars.\nThis is a Preferred property.\n7.5 Good 5616 reviews.\n\u200e10th arr.\u202c \u2022 \u200e2.8 km from centre\u202c.\n 2 hotel rooms : 2\u00a0beds.\n763 GBP.\nIncludes taxes and charges.",
+        "property": {
+          "reviewScoreWord": "Good",
+          "isFirstPage": true,
+          "priceBreakdown": {
+            "taxExceptions": [],
+            "grossPrice": {
+              "value": 762.645797765074,
+              "currency": "GBP"
+            },
+            "benefitBadges": []
+          },
+          "position": 11,
+          "ufi": -1456928,
+          "optOutFromGalleryChanges": 0,
+          "longitude": 2.36264019999999,
+          "currency": "EUR",
+          "mainPhotoId": 251797160,
+          "checkin": {
+            "fromTime": "14:00",
+            "untilTime": "00:00"
+          },
+          "blockIds": [
+            "54797404_94490334_1_2_0",
+            "54797402_94490334_1_1_0"
+          ],
+          "checkout": {
+            "fromTime": "00:00",
+            "untilTime": "12:00"
+          },
+          "reviewCount": 5616,
+          "rankingPosition": 11,
+          "countryCode": "fr",
+          "qualityClass": 0,
+          "name": "ibis Paris Gare du Nord Ch\u00e2teau Landon 10\u00e8me",
+          "reviewScore": 7.5,
+          "latitude": 48.8808901,
+          "isPreferred": true,
+          "id": 547974,
+          "wishlistName": "Paris",
+          "accuratePropertyClass": 3,
+          "propertyClass": 3,
+          "checkoutDate": "2025-07-13",
+          "photoUrls": [
+            "https://cf.bstatic.com/xdata/images/hotel/square500/251797160.jpg?k=196be80d7f0bd21b6c3b4152a6bd684e39a98d142f61f334b9d056fced4cf0aa&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square1024/251797160.jpg?k=196be80d7f0bd21b6c3b4152a6bd684e39a98d142f61f334b9d056fced4cf0aa&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square2000/251797160.jpg?k=196be80d7f0bd21b6c3b4152a6bd684e39a98d142f61f334b9d056fced4cf0aa&o="
+          ],
+          "checkinDate": "2025-07-10"
+        }
+      },
+      {
+        "hotel_id": 2356458,
+        "accessibilityLabel": "Welcome Hotel.\nThis is a Preferred Plus property.\n8.6 Fabulous 1671 reviews.\n\u200e6th arr.\u202c \u2022 \u200e1.1 km from centre\u202c.\nGetaway Deal.\n 2 hotel rooms : 2\u00a0beds.\nOriginal price 2411 GBP. Current price 1633 GBP..\nIncludes taxes and charges.",
+        "property": {
+          "mainPhotoId": 348868115,
+          "optOutFromGalleryChanges": 0,
+          "currency": "EUR",
+          "longitude": 2.33687907853891,
+          "position": 12,
+          "ufi": -1456928,
+          "isPreferredPlus": true,
+          "priceBreakdown": {
+            "strikethroughPrice": {
+              "currency": "GBP",
+              "value": 2411.00073075171
+            },
+            "taxExceptions": [],
+            "grossPrice": {
+              "currency": "GBP",
+              "value": 1632.76152159026
+            },
+            "benefitBadges": [
+              {
+                "identifier": "Getaway 2021 Deals",
+                "variant": "constructive",
+                "text": "Getaway Deal",
+                "explanation": "Getaway Deal"
+              }
+            ]
+          },
+          "isFirstPage": true,
+          "reviewScoreWord": "Fabulous",
+          "qualityClass": 0,
+          "countryCode": "fr",
+          "rankingPosition": 12,
+          "checkout": {
+            "untilTime": "12:00",
+            "fromTime": "00:00"
+          },
+          "reviewCount": 1671,
+          "blockIds": [
+            "235645807_353782213_0_2_0",
+            "235645807_353782213_0_2_0"
+          ],
+          "checkin": {
+            "untilTime": "00:00",
+            "fromTime": "15:00"
+          },
+          "propertyClass": 0,
+          "accuratePropertyClass": 0,
+          "isPreferred": true,
+          "wishlistName": "Paris",
+          "id": 2356458,
+          "latitude": 48.8531421229546,
+          "reviewScore": 8.6,
+          "name": "Welcome Hotel",
+          "checkinDate": "2025-07-10",
+          "photoUrls": [
+            "https://cf.bstatic.com/xdata/images/hotel/square500/348868115.jpg?k=f0fef0d2a3c21df80a482e3936dd127e5f88d4bb196c81a1dec065d66457e2ba&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square1024/348868115.jpg?k=f0fef0d2a3c21df80a482e3936dd127e5f88d4bb196c81a1dec065d66457e2ba&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square2000/348868115.jpg?k=f0fef0d2a3c21df80a482e3936dd127e5f88d4bb196c81a1dec065d66457e2ba&o="
+          ],
+          "checkoutDate": "2025-07-13"
+        }
+      },
+      {
+        "hotel_id": 222577,
+        "accessibilityLabel": "H\u00f4tel Des Mines.\n3 out of 5 stars.\nThis is a Preferred Plus property.\n8.3 Very good 1227 reviews.\n\u200e5th arr.\u202c \u2022 \u200e1.8 km from centre\u202c.\nMobile-only price.\n 2 hotel rooms : 2\u00a0beds.\nOriginal price 1638 GBP. Current price 1332 GBP..\nIncludes taxes and charges.",
+        "property": {
+          "accuratePropertyClass": 3,
+          "propertyClass": 3,
+          "latitude": 48.8426823673633,
+          "isPreferred": true,
+          "id": 222577,
+          "wishlistName": "Paris",
+          "reviewScore": 8.3,
+          "name": "H\u00f4tel Des Mines",
+          "checkinDate": "2025-07-10",
+          "photoUrls": [
+            "https://cf.bstatic.com/xdata/images/hotel/square500/598057947.jpg?k=2156c13113975eaeb9945c673cdc09c41b09b72412a90079fb1f48a635d85de5&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square1024/598057947.jpg?k=2156c13113975eaeb9945c673cdc09c41b09b72412a90079fb1f48a635d85de5&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square2000/598057947.jpg?k=2156c13113975eaeb9945c673cdc09c41b09b72412a90079fb1f48a635d85de5&o="
+          ],
+          "checkoutDate": "2025-07-13",
+          "mainPhotoId": 598057947,
+          "longitude": 2.33853757381439,
+          "optOutFromGalleryChanges": 1,
+          "currency": "EUR",
+          "position": 13,
+          "ufi": -1456928,
+          "isFirstPage": true,
+          "reviewScoreWord": "Very good",
+          "isPreferredPlus": true,
+          "priceBreakdown": {
+            "taxExceptions": [],
+            "benefitBadges": [
+              {
+                "variant": "constructive",
+                "explanation": "Mobile-only price",
+                "text": "Mobile-only price",
+                "identifier": "Mobile Rate"
+              }
+            ],
+            "grossPrice": {
+              "currency": "GBP",
+              "value": 1331.9231904928
+            },
+            "strikethroughPrice": {
+              "currency": "GBP",
+              "value": 1637.79654319665
+            }
+          },
+          "qualityClass": 0,
+          "rankingPosition": 13,
+          "countryCode": "fr",
+          "blockIds": [
+            "113482_88985321_0_2_0",
+            "113482_88985321_0_2_0"
+          ],
+          "checkout": {
+            "untilTime": "12:00",
+            "fromTime": "00:00"
+          },
+          "reviewCount": 1227,
+          "checkin": {
+            "fromTime": "15:00",
+            "untilTime": "00:00"
+          }
+        }
+      },
+      {
+        "hotel_id": 185987,
+        "accessibilityLabel": "H\u00f4tel Dame des Arts.\n4 out of 5 stars.\nThis is a Preferred Plus property.\n8.9 Fabulous 957 reviews.\n\u200e6th arr.\u202c \u2022 \u200e800 m from centre\u202c.\n 2 hotel rooms : 2\u00a0beds.\nOriginal price 3537 GBP. Current price 3187 GBP..\nIncludes taxes and charges.\nFree cancellation.",
+        "property": {
+          "reviewScore": 8.9,
+          "name": "H\u00f4tel Dame des Arts",
+          "accuratePropertyClass": 4,
+          "propertyClass": 4,
+          "id": 185987,
+          "wishlistName": "Paris",
+          "isPreferred": true,
+          "latitude": 48.8527190493458,
+          "checkoutDate": "2025-07-13",
+          "checkinDate": "2025-07-10",
+          "photoUrls": [
+            "https://cf.bstatic.com/xdata/images/hotel/square500/421448554.jpg?k=00726b0964e491b01386a6665e14a88df71fd013ed30cfaf30845909d7cf7abe&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square1024/421448554.jpg?k=00726b0964e491b01386a6665e14a88df71fd013ed30cfaf30845909d7cf7abe&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square2000/421448554.jpg?k=00726b0964e491b01386a6665e14a88df71fd013ed30cfaf30845909d7cf7abe&o="
+          ],
+          "ufi": -1456928,
+          "position": 14,
+          "priceBreakdown": {
+            "strikethroughPrice": {
+              "currency": "GBP",
+              "value": 3536.89218427404
+            },
+            "taxExceptions": [],
+            "grossPrice": {
+              "value": 3187.47178851293,
+              "currency": "GBP"
+            },
+            "benefitBadges": []
+          },
+          "isPreferredPlus": true,
+          "isFirstPage": true,
+          "reviewScoreWord": "Fabulous",
+          "mainPhotoId": 421448554,
+          "currency": "EUR",
+          "longitude": 2.34224729234484,
+          "optOutFromGalleryChanges": 0,
+          "checkout": {
+            "untilTime": "12:00",
+            "fromTime": "00:00"
+          },
+          "reviewCount": 957,
+          "blockIds": [
+            "18598719_382528978_1_1_0",
+            "18598719_382528978_1_1_0"
+          ],
+          "checkin": {
+            "untilTime": "00:00",
+            "fromTime": "15:00"
+          },
+          "qualityClass": 0,
+          "countryCode": "fr",
+          "rankingPosition": 14
+        }
+      },
+      {
+        "hotel_id": 54082,
+        "accessibilityLabel": "Les Jardins Du Marais.\n4 out of 5 stars.\nThis is a Preferred Plus property.\n7.2 Good 2302 reviews.\n\u200e11th arr.\u202c \u2022 \u200e1.3 km from centre\u202c.\n Hotel room : Beds: 1 double or 2 singles.\n1136 GBP.\nIncludes taxes and charges.",
+        "property": {
+          "name": "Les Jardins Du Marais",
+          "reviewScore": 7.2,
+          "isPreferred": true,
+          "wishlistName": "Paris",
+          "id": 54082,
+          "latitude": 48.8604904609542,
+          "propertyClass": 4,
+          "accuratePropertyClass": 4,
+          "checkoutDate": "2025-07-13",
+          "photoUrls": [
+            "https://cf.bstatic.com/xdata/images/hotel/square500/101753253.jpg?k=4080f92565308fc801c3908f158f8879efc8069ad41dc72813b41c295868d58d&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square1024/101753253.jpg?k=4080f92565308fc801c3908f158f8879efc8069ad41dc72813b41c295868d58d&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square2000/101753253.jpg?k=4080f92565308fc801c3908f158f8879efc8069ad41dc72813b41c295868d58d&o="
+          ],
+          "checkinDate": "2025-07-10",
+          "priceBreakdown": {
+            "benefitBadges": [],
+            "taxExceptions": [],
+            "grossPrice": {
+              "value": 1135.74094343557,
+              "currency": "GBP"
+            }
+          },
+          "isPreferredPlus": true,
+          "isFirstPage": true,
+          "reviewScoreWord": "Good",
+          "position": 15,
+          "ufi": -1456928,
+          "optOutFromGalleryChanges": 1,
+          "currency": "EUR",
+          "longitude": 2.36797884106636,
+          "mainPhotoId": 101753253,
+          "checkin": {
+            "fromTime": "15:00",
+            "untilTime": "00:00"
+          },
+          "reviewCount": 2302,
+          "checkout": {
+            "untilTime": "12:00",
+            "fromTime": "00:00"
+          },
+          "blockIds": [
+            "5408201_0_2_0_0"
+          ],
+          "countryCode": "fr",
+          "rankingPosition": 15,
+          "qualityClass": 0
+        }
+      },
+      {
+        "hotel_id": 50726,
+        "accessibilityLabel": "Timhotel Nation.\n3 out of 5 stars.\nThis is a Preferred Plus property.\n8.1 Very good 425 reviews.\n\u200e20th arr.\u202c \u2022 \u200e3.5 km from centre\u202c.\n 2 hotel rooms : 2\u00a0beds.\n586 GBP.\nIncludes taxes and charges.",
+        "property": {
+          "checkin": {
+            "untilTime": "00:00",
+            "fromTime": "14:00"
+          },
+          "blockIds": [
+            "5072610_94272126_0_2_0",
+            "5072610_94272126_0_2_0"
+          ],
+          "checkout": {
+            "fromTime": "00:00",
+            "untilTime": "12:00"
+          },
+          "reviewCount": 425,
+          "rankingPosition": 16,
+          "countryCode": "fr",
+          "qualityClass": 0,
+          "isFirstPage": true,
+          "reviewScoreWord": "Very good",
+          "isPreferredPlus": true,
+          "priceBreakdown": {
+            "taxExceptions": [],
+            "grossPrice": {
+              "currency": "GBP",
+              "value": 585.662262369924
+            },
+            "benefitBadges": []
+          },
+          "ufi": -1456928,
+          "position": 16,
+          "currency": "EUR",
+          "longitude": 2.39902138710022,
+          "optOutFromGalleryChanges": 0,
+          "mainPhotoId": 563315716,
+          "checkoutDate": "2025-07-13",
+          "photoUrls": [
+            "https://cf.bstatic.com/xdata/images/hotel/square500/563315716.jpg?k=f1941186e6d8cdd9a884e45ce982725b58087c0a38356c94d12546646a25920d&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square1024/563315716.jpg?k=f1941186e6d8cdd9a884e45ce982725b58087c0a38356c94d12546646a25920d&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square2000/563315716.jpg?k=f1941186e6d8cdd9a884e45ce982725b58087c0a38356c94d12546646a25920d&o="
+          ],
+          "checkinDate": "2025-07-10",
+          "name": "Timhotel Nation",
+          "reviewScore": 8.1,
+          "latitude": 48.8515024894354,
+          "wishlistName": "Paris",
+          "id": 50726,
+          "isPreferred": true,
+          "propertyClass": 3,
+          "accuratePropertyClass": 3
+        }
+      },
+      {
+        "hotel_id": 58439,
+        "accessibilityLabel": "Royal Saint Michel.\n4 out of 5 stars.\nThis is a Preferred Plus property.\n8.4 Very good 2184 reviews.\n\u200e5th arr.\u202c \u2022 \u200e700 m from centre\u202c.\nGetaway Deal.\n 2 hotel rooms : 2\u00a0beds.\nOriginal price 1898 GBP. Current price 1128 GBP..\nIncludes taxes and charges.",
+        "property": {
+          "wishlistName": "Paris",
+          "id": 58439,
+          "isPreferred": true,
+          "latitude": 48.8529055875489,
+          "propertyClass": 4,
+          "accuratePropertyClass": 4,
+          "name": "Royal Saint Michel",
+          "reviewScore": 8.4,
+          "photoUrls": [
+            "https://cf.bstatic.com/xdata/images/hotel/square500/560523800.jpg?k=bed38a91ba6f93b43d4c930f406a71cf537f72f449714c8ddc332f6b5a6a3491&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square1024/560523800.jpg?k=bed38a91ba6f93b43d4c930f406a71cf537f72f449714c8ddc332f6b5a6a3491&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square2000/560523800.jpg?k=bed38a91ba6f93b43d4c930f406a71cf537f72f449714c8ddc332f6b5a6a3491&o="
+          ],
+          "checkinDate": "2025-07-10",
+          "checkoutDate": "2025-07-13",
+          "longitude": 2.34406292438507,
+          "currency": "EUR",
+          "optOutFromGalleryChanges": 0,
+          "mainPhotoId": 560523800,
+          "isPreferredPlus": true,
+          "priceBreakdown": {
+            "strikethroughPrice": {
+              "value": 1898.40522005444,
+              "currency": "GBP"
+            },
+            "grossPrice": {
+              "currency": "GBP",
+              "value": 1128.28266779694
+            },
+            "taxExceptions": [],
+            "benefitBadges": [
+              {
+                "variant": "constructive",
+                "text": "Getaway Deal",
+                "explanation": "Getaway Deal",
+                "identifier": "Getaway 2021 Deals"
+              }
+            ]
+          },
+          "reviewScoreWord": "Very good",
+          "isFirstPage": true,
+          "ufi": -1456928,
+          "position": 17,
+          "countryCode": "fr",
+          "rankingPosition": 17,
+          "qualityClass": 0,
+          "checkin": {
+            "fromTime": "15:00",
+            "untilTime": "00:00"
+          },
+          "reviewCount": 2184,
+          "checkout": {
+            "fromTime": "05:00",
+            "untilTime": "11:00"
+          },
+          "blockIds": [
+            "5843905_94107087_1_2_0",
+            "5843905_94107087_1_2_0"
+          ]
+        }
+      },
+      {
+        "hotel_id": 53699,
+        "accessibilityLabel": "Novotel Paris Les Halles.\n4 out of 5 stars.\nThis is a Preferred property.\n8.1 Very good 3769 reviews.\n\u200e1st arr.\u202c \u2022 \u200e600 m from centre\u202c.\n 2 hotel rooms : 4\u00a0beds.\n3050 GBP.\nIncludes taxes and charges.",
+        "property": {
+          "name": "Novotel Paris Les Halles",
+          "reviewScore": 8.1,
+          "latitude": 48.8607136837686,
+          "isPreferred": true,
+          "wishlistName": "Paris",
+          "id": 53699,
+          "propertyClass": 4,
+          "accuratePropertyClass": 4,
+          "checkoutDate": "2025-07-13",
+          "photoUrls": [
+            "https://cf.bstatic.com/xdata/images/hotel/square500/679204734.jpg?k=e8fb2970245abd435e469e4e54ee9c91ed7cf272025139ac340c47c787bc3395&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square1024/679204734.jpg?k=e8fb2970245abd435e469e4e54ee9c91ed7cf272025139ac340c47c787bc3395&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square2000/679204734.jpg?k=e8fb2970245abd435e469e4e54ee9c91ed7cf272025139ac340c47c787bc3395&o="
+          ],
+          "checkinDate": "2025-07-10",
+          "isFirstPage": true,
+          "reviewScoreWord": "Very good",
+          "priceBreakdown": {
+            "taxExceptions": [],
+            "benefitBadges": [],
+            "grossPrice": {
+              "value": 3049.87609889557,
+              "currency": "GBP"
+            }
+          },
+          "position": 18,
+          "ufi": -1456928,
+          "currency": "EUR",
+          "longitude": 2.34652787446976,
+          "optOutFromGalleryChanges": 0,
+          "mainPhotoId": 679204734,
+          "checkin": {
+            "fromTime": "14:00",
+            "untilTime": "00:00"
+          },
+          "blockIds": [
+            "5369947_94272800_1_1_0",
+            "5369947_94272800_1_1_0"
+          ],
+          "checkout": {
+            "fromTime": "00:00",
+            "untilTime": "12:00"
+          },
+          "reviewCount": 3769,
+          "rankingPosition": 18,
+          "countryCode": "fr",
+          "qualityClass": 0
+        }
+      },
+      {
+        "hotel_id": 242482,
+        "accessibilityLabel": "H\u00f4tel Clauzel Paris.\n2 out of 5 stars.\nThis is a Preferred property.\n7.3 Good 3555 reviews.\n\u200e9th arr.\u202c \u2022 \u200e2.6 km from centre\u202c.\n 2 hotel rooms : 2\u00a0beds.\n577 GBP.\nIncludes taxes and charges.",
+        "property": {
+          "checkin": {
+            "fromTime": "15:00",
+            "untilTime": "00:00"
+          },
+          "blockIds": [
+            "24248206_91913959_0_2_0",
+            "24248206_91913959_0_2_0"
+          ],
+          "checkout": {
+            "fromTime": "00:00",
+            "untilTime": "11:00"
+          },
+          "reviewCount": 3555,
+          "rankingPosition": 19,
+          "countryCode": "fr",
+          "qualityClass": 0,
+          "isFirstPage": true,
+          "reviewScoreWord": "Good",
+          "priceBreakdown": {
+            "benefitBadges": [],
+            "taxExceptions": [],
+            "grossPrice": {
+              "currency": "GBP",
+              "value": 577.175135648787
+            }
+          },
+          "position": 19,
+          "ufi": -1456928,
+          "longitude": 2.33970522875097,
+          "currency": "EUR",
+          "optOutFromGalleryChanges": 0,
+          "mainPhotoId": 274025990,
+          "checkoutDate": "2025-07-13",
+          "photoUrls": [
+            "https://cf.bstatic.com/xdata/images/hotel/square500/274025990.jpg?k=42d5b1d5743de8207eb3b60beaddac3de3399cc73c4f942fa43185198ab5183d&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square1024/274025990.jpg?k=42d5b1d5743de8207eb3b60beaddac3de3399cc73c4f942fa43185198ab5183d&o=",
+            "https://cf.bstatic.com/xdata/images/hotel/square2000/274025990.jpg?k=42d5b1d5743de8207eb3b60beaddac3de3399cc73c4f942fa43185198ab5183d&o="
+          ],
+          "checkinDate": "2025-07-10",
+          "name": "H\u00f4tel Clauzel Paris",
+          "reviewScore": 7.3,
+          "latitude": 48.8787394866241,
+          "isPreferred": true,
+          "wishlistName": "Paris",
+          "id": 242482,
+          "propertyClass": 2,
+          "accuratePropertyClass": 2
+        }
+      }
+    ],
+    "meta": [
+      {
+        "title": "4637 properties"
+      }
+    ],
+    "appear": [
+      {
+        "component": {
+          "props": {
+            "content": {
+              "props": {
+                "fitContentWidth": true,
+                "items": [
+                  {
+                    "props": {
+                      "component": {
+                        "props": {
+                          "spacing": "spacing_half",
+                          "items": [
+                            {
+                              "props": {
+                                "text": [
+                                  {
+                                    "font": "body_2",
+                                    "text": "Commission paid and other benefits may affect an accommodation's ranking."
+                                  },
+                                  {
+                                    "color": "foreground",
+                                    "text": "  ",
+                                    "font": "strong_2"
+                                  },
+                                  {
+                                    "text": "Find out more",
+                                    "font": "body_2",
+                                    "linkActions": [
+                                      {
+                                        "props": {
+                                          "url": "booking://webview?url=https%3A%2F%2Fm.booking.com%2Fgeneral.en-gb.html%3Faid%3D332731%3Btmpl%3Ddocs%2Fterms-and-conditions"
+                                        }
+                                      }
+                                    ],
+                                    "color": "action_foreground"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "props": {}
+                  },
+                  {
+                    "props": {
+                      "component": {
+                        "props": {
+                          "icon": "close",
+                          "tertiaryTintedColor": "foreground",
+                          "variant": "tertiary_tinted",
+                          "accessibilityLabel": "Close"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "fill": true
+          }
+        },
+        "id": "cma"
+      },
+      {
+        "contentUrl": "https://mobile-apps.booking.com/json/mobile.saba?route_path=saba-chat-entrypoint&add_bh_info=1&add_genius_percentage_value=1&add_ribbon_text=1&affiliate_id=332731&arrival_date=2025-07-10&autoextend=1&booked_x_times_for_dates=1&booked_x_times_threshold=1&categories_filter_additional_data=&change_popularity_sort_option_copy_tag=1&change_sort_options_copy_tags=1&check_excluded_charge_or_tax=1&check_flexible_dates=1&check_is_candidate_wholesaler=1&currency_code=GBP&dark_mode=1&deeplink_sec_since_click=168567.9046729803&departure_date=2025-07-13&dest_ids=-1456928&device_id=57d11ec8bad14e119e4c15a86202c23f&distance_unit=metric&dl_sr_adoption=1&dotd=2&exposure_api_version=2.17&fix_dotd=1&flex_window=0&generate_map_bounding_box=1&get_cny_campaign_banner=1&get_skiing_info=1&guest_qty=2&include_amazon_banner=1&include_apartment_config=1&include_badges_in_price_breakdown=1&include_beach_information=1&include_bh_quality_classification=1&include_block_ids=1&include_bsb_info=1&include_bwallet_hotel_eligibility=1&include_composite_breakdown=1&include_cpc_non_trader_copy=1&include_excluded_charges_detail=1&include_free_cancellation=1&include_genius_badge=1&include_last_reservation=1&include_nr_bookings_best_range_message=1&include_nr_bookings_today=1&include_offered_bed_types=1&include_preview_cards=1&include_rack_rate_savings=1&include_rtb=1&include_ski_information=1&languagecode=en-gb&location_source=recents&mark_first_highlighted_hotel=1&min_saba_version=31&network_type=wifi&new_segments_carousel=1&offset=0&optimized_call=1&outcome=search_results&page_define_enabled=1&pref_match=0&reason=change_sort_options&remove_wishlist_padding=1&room_qty=2&rows=auto&saba=1&saba_payload_root=1&saba_version=50&sb_calendar_open=1&search_type=city&send_ranking_version=1&send_search_id=1&show_beach_filter_badge=1&show_city_distance=1&show_distance_to_beach=1&show_distance_to_nearest_public_transport=1&show_genius_free_breakfast=0&show_if_mobile_deal=1&show_negotiated_rates=1&show_no_prepayment=1&show_policy=1&show_review_score_breakdowns=1&show_selected_filter_values=1&show_soldout=1&sort_by=auto&sort_by_source=sort_options&sort_genius_new_copy=1&source=search_results&temperature_unit=c&travel_purpose=&unfiltered_count_enabled=1&units=metric&use_dest_based_list_creation=1&use_direct_payment=1&user_os=15.5&user_version=36.8-iphone&categories_filter=price%3A%3AGBP-min-max&page=search-results"
+      },
+      {
+        "component": {
+          "props": {
+            "title": "Sign in and save money",
+            "text": "Get instant access to our Genius loyalty programme and enjoy discounts at properties worldwide."
+          }
+        },
+        "id": "signin_now"
+      }
+    ]
+  }
+}

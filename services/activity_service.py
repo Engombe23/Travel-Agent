@@ -1,29 +1,45 @@
-from services import Service
-from models import Activity, Price
-import requests
+from typing import Dict, Any
+import os
+from models import UserInput
+from adapters.activity.tripadvisor_adapter import TripAdvisorAdapter
+from services.base import Service
 
 class ActivityService(Service):
+    def __init__(self):
+        super().__init__()
+        self.rapid_api_key = os.getenv("RAPIDAPIKEY")
+        if not self.rapid_api_key:
+            raise ValueError("RAPIDAPIKEY not found in environment variables")
+            
+        # Initialize adapters
+        self.tripadvisor_adapter = TripAdvisorAdapter(self.rapid_api_key)
 
-  def __init__(self, rapid_api_key: str):
-    self.api_key = rapid_api_key
+    def search_activities(self, input: UserInput) -> Dict[str, Any]:
+        """Search for activities using available adapters"""
+        try:
+            # Try TripAdvisor first
+            response = self.tripadvisor_adapter.search_activities(input)
+            
+            # If TripAdvisor fails or returns no results
+            if response.get("error") or not response.get("results"):
+                return {"Try a new adapater"}
+            
+            return response
 
-  def run(self, activity: Activity, price: Price):
-    base_url = "booking-com.p.rapidapi.com"
+        except Exception as e:
+            return {"error": f"Failed to search activities: {str(e)}"}
 
-    params = {
-      "slug": activity.productSlug,
-      "locale": "en-gb",
-      "currency": price.currency,
-      "api_key": self.api_key,
-    }
+    def get_activity_details(self, activity_id: str, input: UserInput) -> Dict[str, Any]:
+        """Get detailed information about a specific activity"""
+        try:
+            # Try TripAdvisor first
+            response = self.tripadvisor_adapter.get_activity_details(activity_id, input)
+            
+            # If TripAdvisor fails
+            if response.get("error"):
+                return {"error": "TripAdvisor failed"}
+            
+            return response
 
-    try:
-      # Activity Details
-      activity_response = requests.get(base_url, params).json()
-      activity_name = activity_response.get("name", [{}])[0]
-      
-      return {
-        "Activity Name": activity_name  
-      }
-    except Exception as e:
-      return {"error": f"ActivityService failed: {str(e)}"}
+        except Exception as e:
+            return {"error": f"Failed to get activity details: {str(e)}"}

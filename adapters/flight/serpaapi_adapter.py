@@ -39,6 +39,13 @@ class SerpAPIAdapter(FlightAdapter):
       if "error" in data:
         return {"error": f"SerpAPI error: {data['error']}"}
       
+      # Check if no flights are found
+      if not data.get("best_flights") and not data.get("other_flights"):
+        return {
+          "status": "no_flights",
+          "message": f"No flights found for {departure_id} to {arrival_id} on {date}"
+        }
+      
       # Try to get flight data from either best_flights or other_flights
       best_flight = None
       if "best_flights" in data and data["best_flights"]:

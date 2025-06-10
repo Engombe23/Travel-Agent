@@ -65,35 +65,22 @@ class Flight(BaseModel):
       return None
 
   @property
-  def price_str(self) -> Optional[str]:
-      # Return string representation of price (e.g. "£123.45")
+  def price(self) -> Optional[Price]:
+      """Return the flight price"""
       if self.details and self.details.price:
-          return str(self.details.price)
-      return None
-
-  @property
-  def price_float(self) -> Optional[float]:
-      # Remove currency symbol and convert to float
-      if self.details and self.details.price:
-          price_str = str(self.details.price).replace('£', '').strip()
-          try:
-              return float(price_str)
-          except ValueError:
-              return None
+          return self.details.price
       return None
 
   @property
   def departure_time(self) -> Optional[str]:
       if self.details and self.details.flights:
-          # Assuming FlightSegment has departure_time attribute
-          return getattr(self.details.flights[0], 'departure_time', None)
+          return getattr(self.details.flights[0], 'departure_time')
       return None
 
   @property
   def arrival_time(self) -> Optional[str]:
       if self.details and self.details.flights:
-          # Assuming FlightSegment has arrival_time attribute
-          return getattr(self.details.flights[0], 'arrival_time', None)
+          return getattr(self.details.flights[0], 'arrival_time')
       return None
 
   @property
@@ -155,6 +142,12 @@ class Flight(BaseModel):
 
     first_segment = segments[0] if segments else None
 
+    # Extract price information
+    price_amount = flight.get("price", 0)
+    if isinstance(price_amount, str):
+        # Remove currency symbol and convert to float
+        price_amount = float(price_amount.replace('£', '').strip())
+    
     flight_details = FlightDetails(
         flights=segments,
         total_duration=int(flight.get("total_duration", 0) or 0),
@@ -164,7 +157,7 @@ class Flight(BaseModel):
           difference_percent=flight.get("carbon_emissions", {}).get("difference_percent", 0)
         ),
         price=Price(
-            amount=flight.get("price", 0),
+            amount=price_amount,
             currency=flight.get("currency", "GBP")
         ),
         type=flight.get("type", ""),

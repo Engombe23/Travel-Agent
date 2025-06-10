@@ -37,3 +37,24 @@ class QuestionGenerator:
             questions.append("What type of holiday are you looking for? For example: beach vacation, city break, cultural tour, adventure, etc.")
         
         return questions 
+
+    @staticmethod
+    def generate_no_flights_questions(user_input: UserInput) -> list[str]:
+        """Generate follow-up questions when no flights are found for the given input."""
+        questions = []
+        
+        # If we have a specific date, suggest trying different dates
+        if any(c.isdigit() for c in user_input.departure_date_leaving):
+            questions.append("Would you like to try a different date? Please specify when you'd like to travel.")
+        
+        # If we have specific locations, suggest trying different destinations
+        if (user_input.departure_location and user_input.arrival_location and
+            user_input.departure_location.lower() not in ['', 'unknown', 'anywhere', 'somewhere'] and
+            user_input.arrival_location.lower() not in ['', 'unknown', 'anywhere', 'somewhere']):
+            questions.append("Would you like to try a different destination? Please specify where you'd like to go.")
+        
+        # If we don't have specific questions for dates or destinations, ask about flexibility
+        if not questions:
+            questions.append("Would you like to try a different date or destination? Please let me know what you'd prefer to change.")
+        
+        return questions 

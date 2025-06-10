@@ -6,6 +6,7 @@ from services import CityToAirportService, FlightService
 from langchain_core.messages import AIMessage
 from langgraph.prebuilt import create_react_agent
 from dotenv import load_dotenv
+from questionhandling import QuestionGenerator, InputValidator
 
 load_dotenv()
 
@@ -20,6 +21,8 @@ class FlightAgent(Agent):
       tools=[plan_flight],
       model=self.llm
     )
+    self.question_generator = QuestionGenerator()
+    self.input_validator = InputValidator()
 
   def run(self, state: PlannerState) -> PlannerState:
     user_data = state.user_input
@@ -43,6 +46,19 @@ class FlightAgent(Agent):
     if "error" in response:
        state.messages.append(AIMessage(content=f"Flight service error: {response['error']}")) 
        return state
+    
+    if response.get("status") == "no_flights":
+      # Generate specific follow-up questions for no flights scenario
+      follow_up_questions = self.question_generator.generate_no_flights_questions(user_data)
+      
+      # Use the first question if available, otherwise use a generic message
+      if follow_up_questions:
+        message = f"I couldn't find any flights from {user_data.departure_location} to {user_data.arrival_location} on {user_data.departure_date_leaving}. {follow_up_questions[0]}"
+      else:
+        message = f"I couldn't find any flights from {user_data.departure_location} to {user_data.arrival_location} on {user_data.departure_date_leaving}. Would you like to try a different date or destination?"
+      
+      state.messages.append(AIMessage(content=message))
+      return state
     
     flights = response.get("flights", {})
     outbound_flight = flights.get("outbound")
