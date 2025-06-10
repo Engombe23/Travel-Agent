@@ -1,54 +1,111 @@
 # Travel Agent System Design
 
-The system is structured through a programming paradigm called object-oriented programming (OOP).
+## Overview
+This system implements a sophisticated multi-agent travel planning system using Object-Oriented Programming (OOP) principles. The architecture follows SOLID principles and implements a modular, extensible design pattern that allows for easy maintenance and scalability.
 
-## Sections
+## Object-Oriented Design Principles
 
-### 1. Agents
+### 1. Encapsulation
+- Each agent encapsulates its own state and behavior
+- Services and adapters are encapsulated within their respective modules
+- Data models use Pydantic for strict type checking and data validation
 
-As the system involves 4 agents (planner, flight, hotel and activity), each agent is inside the agents/ folder and has its own class, running its individual role in the system
+### 2. Inheritance
+- Base agent classes provide common functionality
+- Specialized agents inherit and extend base functionality
+- Models inherit from Pydantic BaseModel for consistent data handling
 
-### 2. API Adapters
+### 3. Polymorphism
+- Agents implement common interfaces while maintaining unique behaviors
+- Services can be swapped (e.g., different hotel booking services) without affecting the system
+- Tools can be extended with new implementations while maintaining the same interface
 
-The API adapters are found in the /adapters folder. This is used for when API keys for the hotel and activity have reached their limit so for instance, using either TripAdvisor or Booking for hotels should be fine.
+### 4. Abstraction
+- Complex API interactions are abstracted through service layers
+- Agent interactions are abstracted through the graph system
+- External API details are hidden behind adapter interfaces
 
-### 3. Models
+## System Architecture
 
-Pydantic models were created for each agent to be used in LangChain to match the respective agent. For instance, the flight agent uses the Flight & Airport models in flight.py and airport.py.
+### 1. Agents (`/agents`)
+- **PlannerAgent**: Orchestrates the overall travel planning process
+- **FlightAgent**: Handles flight search and booking
+- **HotelAgent**: Manages hotel search and reservations
+- **ActivityAgent**: Handles activity and attraction planning
+- Each agent implements the Observer pattern to update the system state
 
-The models are given attributes and are part of the schema for the application.
+### 2. API Adapters (`/adapters`)
+- Implements the Adapter pattern for external service integration
+- Provides fallback mechanisms for API rate limits
+- Supports multiple service providers (TripAdvisor, Booking.com, etc.)
+- Follows the Interface Segregation Principle
 
-They are located in the models/ folder.
+### 3. Models (`/models`)
+- Pydantic models for type safety and validation
+- Implements Data Transfer Objects (DTOs)
+- Provides clear schema definitions for API interactions
+- Supports serialization/deserialization
 
-### 4. Services (the scripts that run the external APIs like in api-index.js)
+### 4. Services (`/services`)
+- Implements the Service Layer pattern
+- Handles external API communication
+- Manages API key rotation and rate limiting
+- Provides error handling and retry mechanisms
 
-Each agent is connected to its own service (API key), which run the API responses for the flight, hotel and activity. They are located in the services/ folder.
+### 5. Tools (`/tools`)
+- Implements the Command pattern
+- Provides atomic operations for agents
+- Supports the Chain of Responsibility pattern
+- Enables extensible functionality
 
-### 5. Tools
+### 6. Graph (`/graph`)
+- Implements the State pattern
+- Manages agent state transitions
+- Tracks planning progress
+- Provides event-driven updates
 
-Tools are important to for agents to run on LangChain and LangGraph. They are located in the tools/ folder.
-Each agent will have its own tool to run where it calles the respective 'service', the script that runs the API responses
+## Design Patterns Used
 
-### 6. Graph
+1. **Observer Pattern**: Agents observe and react to state changes
+2. **Command Pattern**: Tools encapsulate operations as objects
+3. **Adapter Pattern**: API adapters for external services
+4. **State Pattern**: Graph manages system state
+5. **Service Layer Pattern**: External API interactions
+6. **Factory Pattern**: Agent creation and initialization
 
-The graph/ folder is where the system will be using LangGraph to update the "state" of each agent as it returns its reponse to be added to the graph.
+## Data Flow
 
-A "PlannerState" model was created which links to the PlannerAgent in planner_agent.py. The role of the model is that every time the script runs the flight or hotel agents, the flight and hotel info is updated in the state.
+```
+User Request → PlannerAgent
+    ↓
+[State Update] → Graph
+    ↓
+[Agent Selection] → Specialized Agent
+    ↓
+[Tool Execution] → Service Layer
+    ↓
+[API Interaction] → External Services
+    ↓
+[Response Processing] → State Update
+    ↓
+[Result Aggregation] → Final Response
+```
 
-### 7. agent.py
+## Error Handling and Resilience
 
-The main script to run the application.
+- Graceful degradation when services are unavailable
+- Retry mechanisms for transient failures
+- Fallback options for API rate limits
+- Comprehensive error logging and monitoring
 
-Run the command "python agent.py" to show the CLI output.
+## Conclusion
 
-### 8. Airport Dataset
+The system demonstrates advanced OOP principles through:
+- Clear separation of concerns
+- Modular and maintainable code structure
+- Extensible design for future enhancements
+- Robust error handling and recovery
+- Efficient state management
+- Clean interfaces between components
 
-Found in the /data folder. It was used to match airport IATA codes with cities as the Google Flights API uses IATA codes.
-
-### 9. Conclusion
-
-Overall, the system works like this:
-
-Agent -> Service -> Tool
-
-The agents are matched with their own "models" and the state is updated after flight info, for instance has been received by the agent.
+The architecture follows the principle of "high cohesion, low coupling" while maintaining flexibility for future extensions and modifications. 
